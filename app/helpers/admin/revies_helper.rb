@@ -1,0 +1,2 @@
+module Admin::ReviesHelper
+end
