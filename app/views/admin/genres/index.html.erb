@@ -1,0 +1,16 @@
+<h2>ジャンル登録・一覧</h2>
+
+<div>
+  <%= form_with model:@genre, url:'/admin/genres', metpod: :post do |f| %>
+    <%= f.label :genre, "ジャンル名" %>
+    <%= f.text_field :name %>
+    <%= f.submit "登録する", class: "btn btn-success" %>
+  <% end %>
+</div>
+
+<div>
+  <% @genres.each do |genre| %>
+    <%= genre.name %>
+    <%= link_to "編集", edit_admin_genre_path(genre.id), class: "btn btn-success" %>
+  <% end %>
+</div>

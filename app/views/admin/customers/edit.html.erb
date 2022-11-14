@@ -1,0 +1,18 @@
+<h1><%= @customer.account %>様の編集画面</h1>
+
+<div>
+  <%= form_with model: @customer, url: edit_admin_customer_path(@customer.id) do |f| %>
+    <div>
+      <%= f.label :customer, "アカウント名" %>
+      <%= f.text_field :account %>
+    </div>
+    <div>
+      <%= f.label :customer, "メールアドレス" %>
+      <%= f.text_field :email %>
+    </div>
+    <div>
+     アカウントステータス
+    </div>
+    <%= f.submit "保存" %>
+  <% end %>
+</div>
