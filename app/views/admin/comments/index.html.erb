@@ -1,0 +1,25 @@
+<div>
+  <h1><%= Customer.account %>様のコメント一覧</h1>
+  <div>
+    <% @comment.each do |comment| %>
+      <div>
+        <p>コメント日時</p>
+        <%= comment.created_at %>
+      </div>
+      <div>
+        <p>家電ジャンル</p>
+        <%= comment.genre.name %>
+      </div>
+      <div>
+        <p>家電型番</p>
+        <%= comment.home_appliances.model_number %>
+      </div>
+      <div>
+        <p>コメントタイトル</p>
+        <%= link_to admin_comment_path(comment.id) do %>
+          <%= comment.comment_title %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

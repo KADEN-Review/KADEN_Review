@@ -1,0 +1,6 @@
+<div>
+  <h1><%= @comment.comment_title %></h1>
+  <div><%= @comment.customer.account %></div>
+  <div><%= @comment.comment %></div>
+  <div><%= link_to "コメント削除", admin_comment_destroy_path(@comment.id) %></div>
+</div>

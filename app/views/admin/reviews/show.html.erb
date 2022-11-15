@@ -1,0 +1,30 @@
+<div>
+  <h1><%= HomeAppliances.model_number %>のレビュー</h1>
+  <div><%= link_to "削除する", admin_review_destroy_path(@review.id), method: :delete %></div>
+
+  <div>
+    <%= HomeAppliances.model_number %>
+    <%= Genre.name %>
+  </div>
+
+  <div>
+    <%= @review.review_contents %>
+  </div>
+  <div>
+    <% @review.each do |review| %>
+      <div>
+        <p>コメント日時</p>
+        <%= review.comment.created_at %>
+      </div>
+      <div>
+        <p>コメントタイトル</p>
+        <%= link_to admin_comment_path(comment.id) do %>
+          <%= review.comment.comment_title %>
+        <% end %>
+      </div>
+      <div>
+        <p>コメント者</p>
+        <%= review.customer.account %>
+      </div>
+  </div>
+</div>

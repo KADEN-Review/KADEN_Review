@@ -18,8 +18,10 @@ devise_for :customers,skip: [:passwords], controllers: {
 # 管理者側
  namespace :admin do
      resources :customers, only: [:index, :show, :edit, :update]
-     resources :revies, only: [:index, :show]
-     resources :comments, only: [:index, :show, :destroy]
+     resources :reviews, only: [:index, :show]
+     delete '/review/:id' => 'reviews#destroy', as: 'review_destroy'
+     resources :comments, only: [:index, :show]
+     delete '/comment/:id' => 'comments#destroy', as: 'comment_destroy'
      resources :home_appliances
      resources :genres, only: [:index, :create, :edit, :update]
  end
