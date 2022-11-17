@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-  end
 # 管理者用
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
@@ -27,7 +22,11 @@ devise_for :customers,skip: [:passwords], controllers: {
  end
 
 # 会員側
-
+  root to: 'public/homes#top'
+  resources :customers, only: [:show, :edit, :update]
+  resources :reviews, only: [:index, :new, :show, :create, :destroy]
+  resources :comments, only: [:new]
+  resources :home_appliances, only: [:index, :show]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

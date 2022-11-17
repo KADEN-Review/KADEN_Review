@@ -11,6 +11,19 @@
   </head>
 
   <body>
+    <header>
+      <% if customer_signed_in? %>
+      <li>
+        <%= link_to "家電検索", home_appliances_path %>
+      </li>
+      <li>
+        <%= link_to "レビュー検索", reviews_path %>
+      </li>
+      <li>
+        <%= link_to "レビュー投稿", new_review_path %>
+      </li>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>

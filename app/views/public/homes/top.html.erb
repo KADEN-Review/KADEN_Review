@@ -1,0 +1,10 @@
+<div>
+  <h1>家電レビュー</h1>
+  <div>
+    <h4>最新レビュー</h4>
+    <% @review.first(4).each do |review| %>
+      <%= review.home_appliance.model_number %>
+      <%= review.genre.name %>
+    <% end %>
+  </div>
+</div>
