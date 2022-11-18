@@ -13,6 +13,15 @@ class Public::SessionsController < Devise::SessionsController
 
   protected
 
+  def customer_state
+    @customer = Customer.find_by(email: params[:customer][:email])
+    return if !@customer
+    if @customer.valid_password?(params[:customer][:password]) && !(@customer.is_deleted == false)
+      redirect_to new_customer_session_path
+    else
+    end
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:account])
   end
