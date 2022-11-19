@@ -4,6 +4,6 @@
     <p>アカウント名</p>
     <%= f.text_field.account %>
     <%= f.submit "保存する" %>
-    <%= link_to "削除する", customer_destroy_path(current_customer.id) %>
+    <%= link_to "削除する", unsubscribe_path(current_customer.id) %>
   <% end %>
 </div>

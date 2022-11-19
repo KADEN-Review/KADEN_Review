@@ -29,6 +29,8 @@ devise_for :customers,skip: [:passwords], controllers: {
   root to: 'public/homes#top'
   resources :customers, only: [:index, :edit, :update]
   delete '/customers/:id' => 'customers#destroy', as: 'customer_destroy'
+  get '/customer/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+  patch '/customer/withdraw' => 'customers#withdraw', as: 'withdraw'
   resources :reviews, only: [:index, :new, :show, :create, :destroy]
   resources :comments, only: [:new]
   resources :home_appliances, only: [:index, :show]
