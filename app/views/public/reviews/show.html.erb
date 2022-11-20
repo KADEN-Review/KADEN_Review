@@ -1,0 +1,16 @@
+<div>
+  <h1>レビュー詳細</h1>
+  <div>
+    <%= @review.image %>
+    <%= @review.home_appliance.model_number %>
+    <%= @review.genre.name %>
+  </div>
+  <div>
+    <%= @review.review_contents %>
+  </div>
+  <div>
+    <% if not @reviews.empty? %>
+      <%= link_to "削除", review_destroy_path(review.id) %>
+    <% end %>
+  </div>
+</div>

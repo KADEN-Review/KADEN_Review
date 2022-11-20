@@ -1,0 +1,7 @@
+<div>
+  <h1>家電レビュー検索</h1>
+  <% @reviews.each do |review| %>
+    <%= review.image %>
+    <%= review.home_appliance.model_number %>
+  <% end %>
+</div>

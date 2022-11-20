@@ -1,9 +1,9 @@
 <div>
   <h1>会員情報変更</h1>
-  <%= form_with model: @customer do |f| %>
+  <%= form_with model: @customer, url: public_customer_path(current_customer.id), method: :patch do |f| %>
     <p>アカウント名</p>
-    <%= f.text_field.account %>
+    <%= f.text_field :account %>
     <%= f.submit "保存する" %>
-    <%= link_to "削除する", unsubscribe_path(current_customer.id) %>
+    <%= link_to "削除する", public_unsubscribe_path(current_customer.id) %>
   <% end %>
 </div>

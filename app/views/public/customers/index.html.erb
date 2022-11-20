@@ -1,7 +1,7 @@
 <div>
   <h1>マイページ</h1>
   <%= current_customer.account %>
-  <%= link_to "アカウント名変更", edit_customer_path(current_customer.id) %>
+  <%= link_to "アカウント名変更", edit_public_customer_path(current_customer.id) %>
 
   <div>
     <h2>投稿レビュー一覧</h2>
@@ -10,12 +10,13 @@
         <p>投稿日時</p>
         <%= review.created_at %>
         <p>型番</p>
-        <%= link_to review_path(review.id) do %>
+        <%= link_to public_review_path(review.id) do %>
           <%= review.model_number %>
         <% end %>
         <p>家電ジャンル</p>
         <%= review.genre.name %>
         <p>コメント数</p>
+      <% end %>
     </div>
   </div>
 </div>
