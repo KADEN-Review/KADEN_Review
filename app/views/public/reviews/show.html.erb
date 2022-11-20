@@ -1,7 +1,11 @@
 <div>
   <h1>レビュー詳細</h1>
   <div>
-    <%= @review.image %>
+    <% if @review.image.attached? %>
+      <%= image_tag @review.image, size: "200×200" %>
+    <% else %>
+      <%= image_tag 'no_image', size: "200×200" %>
+    <% end %>
     <%= @review.home_appliance.model_number %>
     <%= @review.genre.name %>
   </div>

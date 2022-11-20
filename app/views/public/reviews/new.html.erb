@@ -1,6 +1,6 @@
 <div>
   <h1>新規レビュー</h1>
-  <%= form_with model: @review do |f| %>
+  <%= form_with model: @review, url: public_review_create_path, method: :post do |f| %>
     <div>
       <%= f.label :image, "家電画像" %>
       <%= f.file_field :image, accept: "image/*" %>
@@ -20,6 +20,9 @@
       <%= f.label :review_contents, "レビュー" %>
       <%= f.text_area :review_contents %>
     </div>
-    <%= f.submit "レビューを投稿する"　%>
+    <div>
+      <%= f.submit "レビューを投稿する" %>
+    </div>
+    <% end %>
 
 </div>
