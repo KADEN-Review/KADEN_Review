@@ -1,0 +1,14 @@
+<div>
+  <h1>家電一覧</h1>
+  <div>
+
+  </div>
+  <div>
+    <% @home_appliances.each do |home_appliances| %>
+      <%= get_image home_appliances.image %>
+      <% link_to public_home_appliance_path do %>
+        <%= home_appliances.model_numberv%>
+      <% end %>
+    <% end %>
+  </div>
+</div>

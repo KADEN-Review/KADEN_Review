@@ -13,6 +13,7 @@
     <%= @review.review_contents %>
   </div>
   <div>
+    <%= link_to "コメントをする", new_public_comment_path(review.id) %>
     <% if not @reviews.empty? %>
       <%= link_to "削除", review_destroy_path(review.id) %>
     <% end %>
