@@ -1,7 +1,7 @@
 <div>
-  <h1><%= Customer.account %>様のコメント一覧</h1>
+  <h1>コメント一覧</h1>
   <div>
-    <% @comment.each do |comment| %>
+    <% @comments.each do |comment| %>
       <div>
         <p>コメント日時</p>
         <%= comment.created_at %>

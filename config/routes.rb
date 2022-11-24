@@ -14,7 +14,7 @@ devise_for :customers,skip: [:passwords], controllers: {
   namespace :admin do
      resources :customers, only: [:index, :show, :edit]
      patch '/customer/:id' => 'customers#update', as: 'customer_update'
-     resources :reviews, only: [:index, :show]
+     resources :reviews, only: [:show]
      delete '/review/:id' => 'reviews#destroy', as: 'review_destroy'
      resources :comments, only: [:index, :show]
      delete '/comment/:id' => 'comments#destroy', as: 'comment_destroy'

@@ -14,4 +14,8 @@ class Admin::CommentsController < ApplicationController
   def comment_params
     params.require(:comment).private(:comment_title, :comment)
   end
+
+  def customer_params
+    params.require(:customer).private(:account)
+  end
 end
