@@ -1,4 +1,4 @@
-<h1><%= Customer.account(customer.id) %>様の詳細画面</h1>
+<h1><%= @customer.account %>様の詳細画面</h1>
 <div>
   <p>アカウントID</p>
   <%= @customer.id %>
@@ -18,7 +18,27 @@
 </div>
 
 <div>
+  <% @reviews.each do |review| %>
+    <div>
+      <p>レビュー日時</p>
+      <%= review.created_at %>
+    </div>
+    <div>
+      <p>ジャンル</p>
+      <%= Genre.name %>
+    </div>
+    <div>
+      <p>家電型番</p>
+      <%= HomeAppliance.model_number %>
+    </div>
+    <div>
+      <p>コメント数</p>
+
+    </div>
+  <% end %>
+</div>
+
+<div>
   <%= link_to "アカウント情報変更", edit_admin_customer_path(@customer.id) %>
-  <%= link_to "投稿レビュー", admin_revies_path(@customer.id) %>
   <%= link_to "投稿コメント", admin_comments_path(@customer.id) %>
 </div>

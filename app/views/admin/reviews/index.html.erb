@@ -1,28 +1,28 @@
 <div>
   <h1><%= @customer.account %>様のレビュー一覧</h1>
-  
+
   <div>
     <%= @reviews.each do |review| %>
     <div>
       <p>レビュー日時</p>
       <%= review.created_at %>
     </div>
-    
+
     <div>
       <p>ジャンル</p>
       <%= Genre.name %>
     </div>
-    
+
     <div>
       <p>家電型番</p>
       <%= HomeAppliance.model_number %>
     </div>
-    
+
     <div>
       <p>コメント数</p>
-      
+
     </div>
     <% end %>
   </div>
-  
+
 </div>

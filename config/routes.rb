@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-  end
 # 管理者用
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
@@ -16,13 +12,15 @@ devise_for :customers,skip: [:passwords], controllers: {
 
 # 管理者側
   namespace :admin do
-     resources :customers, only: [:index, :show, :edit, :update]
+     resources :customers, only: [:index, :show, :edit]
+     patch '/customer/:id' => 'customers#update', as: 'customer_update'
      resources :reviews, only: [:index, :show]
      delete '/review/:id' => 'reviews#destroy', as: 'review_destroy'
      resources :comments, only: [:index, :show]
      delete '/comment/:id' => 'comments#destroy', as: 'comment_destroy'
      resources :home_appliances
-     resources :genres, only: [:index, :create, :edit, :update]
+     resources :genres, only: [:index, :edit, :update]
+     post '/genres' => 'genres#create', as: 'genres_create'
   end
 
 # 会員側
