@@ -3,7 +3,7 @@
   <p>退会すると、会員登録情報やこれまで投稿したレビューやコメントを閲覧できなくなります。</p>
   <p>退会する場合は、「退会する」をクリックしてください。</p>
 
-  <%= link_to "退会しない", public_customers_path(current_customer.id) %>
+  <%= link_to "退会しない", public_customers_path(current_customer) %>
   <% if customer_signed_in? && @customer.id == current_customer.id %>
     <%= link_to "退会する",  public_withdraw_path, method: :patch, data: {comfirm: "本当に退会しますか？"} %>
   <% end %>

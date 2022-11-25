@@ -15,6 +15,13 @@
 </div>
 <div>
   <p>アカウントステータス</p>
+  <div>
+    <% if @customer.is_deleted %>
+      無効
+    <% else %>
+      有効
+    <% end %>
+  </div>
 </div>
 
 <div>

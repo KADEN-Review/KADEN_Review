@@ -18,7 +18,11 @@ devise_for :customers,skip: [:passwords], controllers: {
      delete '/review/:id' => 'reviews#destroy', as: 'review_destroy'
      resources :comments, only: [:index, :show]
      delete '/comment/:id' => 'comments#destroy', as: 'comment_destroy'
-     resources :home_appliances
+     resources :home_appliances, only: [:index, :new, :show, :edit]
+     post '/home_appliances' => 'home_appliances#create', as: 'home_applianc_create'
+     patch '/home_appliances/:id' => 'home_appliances#update', as: 'home_applianc_update'
+     delete '/home_appliances/:id' => 'home_appliances#destroy', as: 'home_applianc_destroy'
+     get '/search' => 'home_appliances#search', as: 'search_path'
      resources :genres, only: [:index, :edit, :update]
      post '/genres' => 'genres#create', as: 'genres_create'
   end

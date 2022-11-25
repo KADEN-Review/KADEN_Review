@@ -6,6 +6,7 @@ class Admin::GenresController < ApplicationController
 
   def create
     genre = Genre.new(genre_params)
+    binding.pry
     genre.save
     redirect_to admin_genres_path
   end
@@ -23,6 +24,6 @@ class Admin::GenresController < ApplicationController
   private
 
   def genre_params
-    params.require(:genre).permit(:name)
+   params.require(:genre).permit(:name, :review_id, :home_appliance_id)
   end
 end
