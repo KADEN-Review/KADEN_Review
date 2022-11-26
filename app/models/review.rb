@@ -1,6 +1,5 @@
 class Review < ApplicationRecord
   has_many :comments
-  has_many :genres
   belongs_to :customer
   has_one_attached :image
 

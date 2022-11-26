@@ -20,10 +20,14 @@ class Admin::HomeAppliancesController < ApplicationController
 
   def update
   end
-  
+
   def search
-    @
-    @model_number = params[:model_number]
-    render "index"
+    @home_appliances = HomeAppliance.search(params[:search])
+  end
+
+  private
+
+  def home_appliance_params
+    params.require(:home_appliance).premit(:genre_id, :model_number, :body_size)
   end
 end

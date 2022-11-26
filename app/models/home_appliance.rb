@@ -9,5 +9,13 @@ class HomeAppliance < ApplicationRecord
     end
     image
   end
+  
+  def self.search(search)
+    if search
+      HomeAppliance.where(["model_number like?", "%#{search}%"])
+    else
+      HomeAppliance.all
+    end
+  end
 
 end
