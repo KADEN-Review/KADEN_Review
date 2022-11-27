@@ -1,3 +1,3 @@
 class Genre < ApplicationRecord
-  has_many :home_appliances
+  has_many :reviews
 end

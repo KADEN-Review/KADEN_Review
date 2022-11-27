@@ -13,7 +13,7 @@ class Public::ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.customer_id = current_customer.id
     @review.save
-    redirect_to public_review_path
+    redirect_to public_review_path(@review.id)
   end
 
   def show
@@ -21,9 +21,15 @@ class Public::ReviewsController < ApplicationController
     @reviews = current_customer.reviews
   end
 
+  def destroy
+    review = Review.find(params[:id])
+    review.destroy
+    redirect_to public_reviews_path
+  end
+
   private
 
   def review_params
-    params.require(:review).permit(:genre_id, :star, :review_contents, :image, :model_number)
+    params.require(:review).permit(:id, :genre_id, :home_appliance_id, :model_number, :star, :review_contents, :image, :model_number)
   end
 end

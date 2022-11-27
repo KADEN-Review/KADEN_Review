@@ -1,6 +1,8 @@
 class HomeAppliance < ApplicationRecord
   has_one_attached :image
+  has_many :reviews
   belongs_to :genre
+
 
   def get_image
     unless image.attached?
@@ -9,7 +11,7 @@ class HomeAppliance < ApplicationRecord
     end
     image
   end
-  
+
   def self.search(search)
     if search
       HomeAppliance.where(["model_number like?", "%#{search}%"])

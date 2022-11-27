@@ -1,7 +1,7 @@
 <div>
   <h1>コメント投稿</h1>
   <div>
-    <%= form_with model: @comment, url: public_create_comment_path(comment.id) do |f| %>
+    <%= form_with model: @comment, url: public_create_comment_path(@comment.id) do |f| %>
     <div>
       <%= f.label :comment_title, "コメントタイトル" %>
       <%= f.text_field :comment_title %>
@@ -9,7 +9,10 @@
     <div>
       <%= f.text_area :comment %>
     </div>
-    <%= f.submit "コメントを投稿する" %>
+    <div>
+      <%= f.submit "コメントを投稿する" %>
+    </div>
+    <% end %>
   </div>
 
 </div>

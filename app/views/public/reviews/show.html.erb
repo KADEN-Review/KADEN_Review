@@ -6,16 +6,16 @@
     <% else %>
       <%= image_tag 'no_image', size: "200×200" %>
     <% end %>
-    <%= @review.home_appliance.model_number %>
+    <%= @review.model_number %>
     <%= @review.genre.name %>
   </div>
   <div>
     <%= @review.review_contents %>
   </div>
   <div>
-    <%= link_to "コメントをする", new_public_comment_path(review.id) %>
+    <%= link_to "コメントをする", new_public_comment_path(@review.id) %>
     <% if not @reviews.empty? %>
-      <%= link_to "削除", review_destroy_path(review.id) %>
+      <%= link_to "削除", public_review_destroy_path(@review.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
     <% end %>
   </div>
 </div>

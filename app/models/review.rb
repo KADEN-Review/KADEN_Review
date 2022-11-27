@@ -1,6 +1,7 @@
 class Review < ApplicationRecord
   has_many :comments
   belongs_to :customer
+  belongs_to :genre
   has_one_attached :image
 
   def get_image
@@ -9,6 +10,14 @@ class Review < ApplicationRecord
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', cotent_type: 'image/jpeg')
     end
     image
+  end
+
+  def self.search(search)
+    if search
+      HomeAppliance.where(["model_number like?", "%#{search}%"])
+    else
+      HomeAppliance.all
+    end
   end
 
 end

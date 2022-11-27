@@ -14,9 +14,6 @@
     <header>
       <% if customer_signed_in? %>
         <li>
-          <%= link_to "家電検索", public_home_appliances_path %>
-        </li>
-        <li>
           <%= link_to "レビュー検索", public_reviews_path %>
         </li>
         <li>
@@ -30,9 +27,6 @@
           <%= link_to "会員一覧", admin_customers_path %>
         </li>
         <li>
-          <%= link_to "家電一覧", admin_home_appliances_path %>
-        </li>
-        <li>
           <%= link_to "ジャンル一覧", admin_genres_path %>
         </li>
         <li>
@@ -42,9 +36,6 @@
           <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
         </li>
       <% else %>
-        <li>
-          <%= link_to "家電検索", public_home_appliances_path %>
-        </li>
         <li>
           <%= link_to "レビュー検索", public_reviews_path %>
         </li>
