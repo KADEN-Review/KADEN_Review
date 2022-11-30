@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'home_appliances/new'
+    get 'home_appliances/index'
+    get 'home_appliances/show'
+    get 'home_appliances/edit'
+  end
+  get 'home_appliances/index'
+  get 'home_appliances/show'
+  get 'home_appliances/edit'
+  get 'home_appliances/new'
 # 管理者用
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"

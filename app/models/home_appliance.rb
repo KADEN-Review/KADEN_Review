@@ -1,7 +1,6 @@
 class HomeAppliance < ApplicationRecord
   has_one_attached :image
   has_many :reviews
-  belongs_to :genre
 
 
   def get_image
@@ -19,5 +18,4 @@ class HomeAppliance < ApplicationRecord
       HomeAppliance.all
     end
   end
-
 end
