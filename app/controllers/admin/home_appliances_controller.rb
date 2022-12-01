@@ -1,8 +1,10 @@
 class Admin::HomeAppliancesController < ApplicationController
   def new
+    @home_appliance = HomeAppliance.new
   end
 
   def index
+    @home_appliances = HomeAppliance.all
   end
 
   def show
