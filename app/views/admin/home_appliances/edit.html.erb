@@ -1,2 +1,22 @@
-<h1>Admin::HomeAppliances#edit</h1>
-<p>Find me in app/views/admin/home_appliances/edit.html.erb</p>
+<div>
+  <p><%= @home_appliance.model_number %>編集</p>
+
+  <div>
+    <%= form_with model: @home_appliance, url: admin_home_appliance_update_path(@home_appliance.id), method: :patch do |f| %>
+      <div>
+        <%= f.label :model_number, "型番" %>
+        <%= f.text_field :model_number %>
+      </div>
+      <div>
+        <%= f.label :genre , "カテゴリー" %>
+        <%= f.collection_select :genre_id, @genre, :id, :name %>
+      </div>
+      <div>
+        <%= f.label :body_size, "本体サイズ" %>
+        <%= f.text_field :body_size %>
+      </div>
+      <%= f.submit "保存する" %>
+      <%= link_to "削除する", admin_home_appliance_destroy_path(@home_appliance.id) %>
+    <% end %>
+  </div>
+</div>

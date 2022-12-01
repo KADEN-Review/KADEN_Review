@@ -1,15 +1,17 @@
 <div>
-  <h1><%= @home_appliance.model_number %>詳細</h1>
-
+  <p><%= @home_appliance.model_number %>詳細</p>
+  
   <div>
     <p>カテゴリー</p>
     <%= @home_appliance.genre.name %>
   </div>
+  
   <div>
     <p>本体サイズ</p>
     <%= @home_appliance.body_size %>
   </div>
+  
   <div>
-    <%= link_to "編集", edit_admin_home_appliance_path(@home_appliance.id) %>
+    <%= link_to "レビューをする", new_public_review_path %>
   </div>
 </div>

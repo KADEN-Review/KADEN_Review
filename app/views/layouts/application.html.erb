@@ -14,10 +14,13 @@
     <header>
       <% if customer_signed_in? %>
         <li>
+          <%= link_to "マイページ" , public_customer_path(current_customer) %>
+        </li>
+        <li>
           <%= link_to "レビュー検索", public_reviews_path %>
         </li>
         <li>
-          <%= link_to "レビュー投稿", new_public_review_path %>
+          <%= link_to "家電検索", public_home_appliances_path %>
         </li>
         <li>
           <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>

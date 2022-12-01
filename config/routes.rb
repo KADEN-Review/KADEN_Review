@@ -1,15 +1,10 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'home_appliances/new'
+  namespace :public do
     get 'home_appliances/index'
+    get 'home_appliances/new'
     get 'home_appliances/show'
-    get 'home_appliances/edit'
   end
-  get 'home_appliances/index'
-  get 'home_appliances/show'
-  get 'home_appliances/edit'
-  get 'home_appliances/new'
 # 管理者用
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
@@ -28,6 +23,10 @@ devise_for :customers,skip: [:passwords], controllers: {
      delete '/review/:id' => 'reviews#destroy', as: 'review_destroy'
      resources :comments, only: [:index, :show]
      delete '/comment/:id' => 'comments#destroy', as: 'comment_destroy'
+     resources :home_appliances, only: [:index, :new, :show, :edit]
+     post '/home_appliances' => 'home_appliances#create', as: 'home_appliance_create'
+     patch '/home_appliances/:id' => 'home_appliances#update', as: 'home_appliance_update'
+     delete '/home_appliances/:id' => 'home_appliances#destroy', as: 'home_appliance_destroy'
      get '/search' => 'home_appliances#search', as: 'search_path'
      resources :genres, only: [:index, :edit, :update]
      post '/genres' => 'genres#create', as: 'genres_create'
@@ -37,13 +36,15 @@ devise_for :customers,skip: [:passwords], controllers: {
   root to: 'public/homes#top'
   namespace :public do
     root to: '/homes#top'
-    resources :customers, only: [:index, :edit, :update]
+    resources :customers, only: [:show, :edit, :update]
     delete '/customers/:id' => 'customers#destroy', as: 'customer_destroy'
     get '/customer/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch '/customer/withdraw' => 'customers#withdraw', as: 'withdraw'
     resources :reviews, only: [:index, :new, :show]
     post '/reviews' => 'reviews#create', as: 'review_create'
     delete '/customer/:id' => 'reviews#destroy', as: 'review_destroy'
+    resources :home_appliances, only: [:index, :new, :show]
+    post 'home_appliances' => 'home_appliances#create', as: 'home_applianc_create'
     resources :comments, only: [:new]
     post '/comments' => 'comments#create', as: 'create_comment'
   end

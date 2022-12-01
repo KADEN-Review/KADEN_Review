@@ -1,17 +1,13 @@
-class Admin::HomeAppliancesController < ApplicationController
-  def new
+class Public::HomeAppliancesController < ApplicationController
+  def index
+    @home_appliances = HomeAppliances.all
   end
 
-  def index
+  def new
   end
 
   def show
     @home_appliance = HomeAppliance.find(params[:id])
-  end
-
-  def edit
-    @home_appliance = HomeAppliance.find(params[:id])
-    @genre = Genre.all
   end
 
   private

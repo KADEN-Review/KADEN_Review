@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
-  def index
+  def show
     @reviews = Review.all
   end
 

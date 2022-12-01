@@ -1,0 +1,19 @@
+<div>
+  <h1>家電検索</h1>
+  
+  <div>
+    <p>家電カテゴリー</p>
+  </div>
+  
+  <% @home_appliances.each do |home_appliance| %>
+  <div>
+    <%= image_tag home_appliance.image, size: "100×100" %>
+  </div>
+  <div>
+    <p>型番</p>
+    <div>
+      <%= home_appliance.model_number %>
+    </div>
+  </div>
+  <% end %>
+</div>
