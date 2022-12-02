@@ -14,7 +14,14 @@
       <%= f.collection_select :genre_id, @genre, :id, :name, include_blank: "--選択してください--" %>
     </div>
     <div>
-      <%= f.label :star, "家電評価" %>
+      <div>
+        <%= f.label :star, "家電評価" %>
+        <span class="fa fa-star-o" id="star"></span>
+        <span class="fa fa-star-o" id="star"></span>
+        <span class="fa fa-star-o" id="star"></span>
+        <span class="fa fa-star-o" id="star"></span>
+        <span class="fa fa-star-o" id="star"></span>
+      </div>
     </div>
     <div>
       <%= f.label :review_contents, "レビュー" %>

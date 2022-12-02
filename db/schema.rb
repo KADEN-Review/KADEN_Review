@@ -82,7 +82,8 @@ ActiveRecord::Schema.define(version: 2022_11_30_162346) do
   end
 
   create_table "home_appliances", force: :cascade do |t|
-    t.integer "review_id", null: false
+    t.integer "review_id"
+    t.integer "genre_id", null: false
     t.string "model_number", null: false
     t.string "body_size"
     t.datetime "created_at", precision: 6, null: false

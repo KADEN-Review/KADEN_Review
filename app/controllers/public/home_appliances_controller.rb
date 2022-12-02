@@ -1,6 +1,6 @@
 class Public::HomeAppliancesController < ApplicationController
   def index
-    @home_appliances = HomeAppliances.all
+    @home_appliances = HomeAppliance.all
   end
 
   def new

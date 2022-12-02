@@ -1,6 +1,6 @@
 class Review < ApplicationRecord
   has_many :comments
-  has_many :home_appliances
+  belongs_to :home_appliances
   belongs_to :customer
   has_one_attached :image
 

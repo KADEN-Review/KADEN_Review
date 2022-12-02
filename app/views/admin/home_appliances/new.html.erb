@@ -1,7 +1,7 @@
 <div>
   <h1>新規家電登録</h1>
   <div>
-    <%= form_with model: @home_applianc, url: admin_home_applianc_create_path, method: :post do |f| %>
+    <%= form_with model: @home_appliance, url: admin_home_appliance_create_path, method: :post do |f| %>
       <div>
         <%= f.label :image, "家電画像" %>
         <%= f.file_field :image, accept: "image/*" %>
@@ -11,13 +11,10 @@
         <%= f.text_field :model_number %>
       </div>
       <div>
-        <%= f.label :genre, "カテゴリー" %>
+        <%= f.label :genre_id, "カテゴリー" %>
         <%= f.collection_select(:genre_id, @genre, :id, :name, prompt: "選択してください") %>
       </div>
-      <div>
-        <%= f.label :body_size, "本体サイズ" %>
-        <%= f.text_field :body_size %>
-      </div>
     <%= f.submit "新規登録" %>
+    <% end %>
   </div>
 </div>
