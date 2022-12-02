@@ -6,12 +6,15 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
+      <% if customer_signed_in? %>
+        <p><%= current_customer.account %></p>
+      <% end %>
       <% if customer_signed_in? %>
         <li>
           <%= link_to "マイページ" , public_customer_path(current_customer) %>
