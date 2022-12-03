@@ -1,14 +1,14 @@
 <div>
   <h1>家電一覧</h1>
   <div class="search-form">
-    <%= form_tag(search_path,:methot => 'get') do %>
-      <%= text_field_tag :search %>
+    <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
+      <%= text_field :search, value: @search %>
       <%= submit_tag "検索", :model_number => nil %>
     <% end %>
   </div>
   <div>
-    <%= @home_appliances.each do |home_applianc| %>
-      <% link_to admin_home_appliance_path do %>
+    <% @home_appliances.each do |home_applianc| %>
+      <%= link_to admin_home_appliance_path(home_applianc.id) do %>
         <%= home_applianc.model_number %>
       <% end %>
     <% end %>

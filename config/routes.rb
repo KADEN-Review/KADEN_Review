@@ -22,7 +22,7 @@ devise_for :customers,skip: [:passwords], controllers: {
      post '/home_appliances' => 'home_appliances#create', as: 'home_appliance_create'
      patch '/home_appliances/:id' => 'home_appliances#update', as: 'home_appliance_update'
      delete '/home_appliances/:id' => 'home_appliances#destroy', as: 'home_appliance_destroy'
-     get '/search' => 'home_appliances#search', as: 'search_path'
+     get '/search' => 'home_appliances#search', as: 'search'
      resources :genres, only: [:index, :edit, :update]
      post '/genres' => 'genres#create', as: 'genres_create'
   end

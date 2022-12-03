@@ -23,6 +23,11 @@ class Admin::HomeAppliancesController < ApplicationController
     @genre = Genre.all
   end
 
+  def search
+    @home_appliances = HomeAppliance.search(params[:search])
+    @search = params[:search]
+    render "index"
+  end
   private
 
   def home_appliance_params
