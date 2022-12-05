@@ -11,12 +11,9 @@
         <%= f.label :genre , "カテゴリー" %>
         <%= f.collection_select :genre_id, @genre, :id, :name %>
       </div>
-      <div>
-        <%= f.label :body_size, "本体サイズ" %>
-        <%= f.text_field :body_size %>
-      </div>
       <%= f.submit "保存する" %>
-      <%= link_to "削除する", admin_home_appliance_destroy_path(@home_appliance.id) %>
+      <%= link_to "詳細画面へ戻る", admin_home_appliance_path(@home_appliance.id) %>
+      <%= link_to "削除する", admin_home_appliance_destroy_path(@home_appliance.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
     <% end %>
   </div>
 </div>

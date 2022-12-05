@@ -1,7 +1,7 @@
 class HomeAppliance < ApplicationRecord
   has_one_attached :image
-  has_many :reviews, dependent: :destroy
-
+  has_many :reviews
+  belongs_to :genre
 
   def get_image
     unless image.attached?

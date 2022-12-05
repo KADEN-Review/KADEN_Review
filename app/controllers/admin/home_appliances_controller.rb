@@ -7,7 +7,7 @@ class Admin::HomeAppliancesController < ApplicationController
   def create
     home_appliance = HomeAppliance.new(home_appliance_params)
     home_appliance.save
-    redirect_to new_admin_home_appliance_path
+    redirect_to admin_home_appliances_path
   end
 
   def index
@@ -21,6 +21,18 @@ class Admin::HomeAppliancesController < ApplicationController
   def edit
     @home_appliance = HomeAppliance.find(params[:id])
     @genre = Genre.all
+  end
+
+  def update
+    home_appliance = HomeAppliance.find(params[:id])
+    home_appliance.update(home_appliance_params)
+    redirect_to admin_home_appliance_path(home_appliance.id)
+  end
+
+  def destroy
+    home_appliance = HomeAppliance.find(params[:id])
+    home_appliance.destroy
+    redirect_to admin_home_appliances_path
   end
 
   def search

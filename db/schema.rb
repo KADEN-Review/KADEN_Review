@@ -83,11 +83,12 @@ ActiveRecord::Schema.define(version: 2022_11_30_162346) do
 
   create_table "home_appliances", force: :cascade do |t|
     t.integer "review_id"
-    t.integer "genre_id", null: false
+    t.integer "genre_id"
     t.string "model_number", null: false
-    t.string "body_size"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["genre_id"], name: "index_home_appliances_on_genre_id"
+    t.index ["review_id"], name: "index_home_appliances_on_review_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -103,4 +104,6 @@ ActiveRecord::Schema.define(version: 2022_11_30_162346) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "home_appliances", "genres"
+  add_foreign_key "home_appliances", "reviews"
 end
