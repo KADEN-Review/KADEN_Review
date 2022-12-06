@@ -13,6 +13,7 @@ class Public::ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.customer_id = current_customer.id
     @review.save
+    #binding.pry
     redirect_to public_review_path(@review.id)
   end
 
@@ -30,6 +31,8 @@ class Public::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:id, :genre_id, :home_appliance_id, :model_number, :star, :review_contents, :image, :model_number)
+    params.require(:review).permit(:id, :genre_id, :home_appliance_id,
+                                   :model_number, :score, :review_contents,
+                                   :image)
   end
 end

@@ -15,12 +15,8 @@
     </div>
     <div>
       <div>
-        <%= f.label :star, "家電評価" %>
-        <span class="fa fa-star-o" id="star"></span>
-        <span class="fa fa-star-o" id="star"></span>
-        <span class="fa fa-star-o" id="star"></span>
-        <span class="fa fa-star-o" id="star"></span>
-        <span class="fa fa-star-o" id="star"></span>
+        <%= f.label :score, "家電評価" %>
+        <%= f.select :score, *[1..5] %>
       </div>
     </div>
     <div>

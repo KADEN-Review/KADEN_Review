@@ -1,2 +1,17 @@
-<h1>Public::HomeAppliances#new</h1>
-<p>Find me in app/views/public/home_appliances/new.html.erb</p>
+<div></div>
+  <h1>レビューしたい家電登録</h1>
+
+  <div>
+    <%= form_with model: @home_appliance, url: public_home_applianc_create_path, method: :post do |f| %>
+      <div>
+        <%= f.label :model_number, "家電型番" %>
+        <%= f.text_field :model_number %>
+      </div>
+      <div>
+        <%= f.label :genre, "家電ジャンル" %>
+        <%= f.collection_select :genre_id, @genre, :id, :name, include_blank: "--選択してください--" %>
+      </div>
+      <%= f.submit "登録する" %>
+    <% end %>
+  </div>
+</div>

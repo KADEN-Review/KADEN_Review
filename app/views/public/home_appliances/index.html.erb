@@ -1,18 +1,25 @@
 <div>
   <h1>家電検索</h1>
-  
+
   <div>
     <p>家電カテゴリー</p>
   </div>
-  
+
   <% @home_appliances.each do |home_appliance| %>
   <div>
-    <%= image_tag home_appliance.image, size: "100×100" %>
+    <% if home_appliance.image.attached? %>
+      <%= image_tag home_appliance.image, size: "100×100" %>
+    <% else %>
+      <%= image_tag 'no_image', size: "100×100" %>
+    <% end %>
   </div>
   <div>
     <p>型番</p>
     <div>
       <%= home_appliance.model_number %>
+    </div>
+    <div>
+      <%= link_to "レビューする", new_public_review_path %>
     </div>
   </div>
   <% end %>

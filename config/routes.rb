@@ -16,8 +16,6 @@ devise_for :customers,skip: [:passwords], controllers: {
      patch '/customer/:id' => 'customers#update', as: 'customer_update'
      resources :reviews, only: [:show]
      delete '/review/:id' => 'reviews#destroy', as: 'review_destroy'
-     resources :comments, only: [:index, :show]
-     delete '/comment/:id' => 'comments#destroy', as: 'comment_destroy'
      resources :home_appliances, only: [:index, :new, :show, :edit]
      post '/home_appliances' => 'home_appliances#create', as: 'home_appliance_create'
      patch '/home_appliances/:id' => 'home_appliances#update', as: 'home_appliance_update'
@@ -40,8 +38,6 @@ devise_for :customers,skip: [:passwords], controllers: {
     delete '/customer/:id' => 'reviews#destroy', as: 'review_destroy'
     resources :home_appliances, only: [:index, :new, :show]
     post 'home_appliances' => 'home_appliances#create', as: 'home_applianc_create'
-    resources :comments, only: [:new]
-    post '/comments' => 'comments#create', as: 'create_comment'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
