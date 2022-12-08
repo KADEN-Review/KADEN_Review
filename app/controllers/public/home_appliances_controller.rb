@@ -6,6 +6,7 @@ class Public::HomeAppliancesController < ApplicationController
 
   def new
     @home_appliance = HomeAppliance.new
+    @genre = Genre.all
   end
 
   def create
@@ -16,11 +17,12 @@ class Public::HomeAppliancesController < ApplicationController
 
   def show
     @home_appliance = HomeAppliance.find(params[:id])
+    @review = Review.new
   end
 
   private
 
   def home_appliance_params
-    params.require(:home_appliance).permit(:review_id, :model_number, :body_size)
+    params.require(:home_appliance).permit(:review_id, :genre_id, :model_number)
   end
 end

@@ -7,15 +7,13 @@
     <h2>投稿レビュー一覧</h2>
     <div>
       <% @reviews.each do |review| %>
-        <p>投稿日時</p>
-        <%= review.created_at %>
-        <p>型番</p>
+        <p>投稿日時:<%= review.created_at %></p>
+        <p>型番:<%= review.model_number %></p>
         <%= link_to public_review_path(review.id) do %>
           <%= review.model_number %>
         <% end %>
-        <p>家電ジャンル</p>
-        <%= review.genre.name %>
-        <p>コメント数</p>
+        <p>家電ジャン:<%= review.genre.name %></p>
+        <p>レビュー数:<%= link_to "#{home_appliance.review.count}レビュー", new_public_review_path %></p>
       <% end %>
     </div>
   </div>

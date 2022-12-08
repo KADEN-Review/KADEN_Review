@@ -1,7 +1,6 @@
 class CreateHomeAppliances < ActiveRecord::Migration[6.1]
   def change
     create_table :home_appliances do |t|
-      t.references :review, foreign_key: true
       t.references :genre, foreign_key: true
       t.string :model_number, null: false
 

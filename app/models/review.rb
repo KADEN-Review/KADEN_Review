@@ -1,8 +1,8 @@
 class Review < ApplicationRecord
-  has_many :comments
+  has_one_attached :image
+  
   belongs_to :home_appliance
   belongs_to :customer
-  has_one_attached :image
 
   def get_image
     unless image.attached?

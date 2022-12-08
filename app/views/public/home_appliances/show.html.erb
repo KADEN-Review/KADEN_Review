@@ -1,12 +1,30 @@
 <div>
   <p><%= @home_appliance.model_number %>詳細</p>
-  
+
   <div>
     <p>カテゴリー</p>
     <%= @home_appliance.genre.name %>
   </div>
-  
+
   <div>
-    <%= link_to "レビューをする", new_public_review_path %>
+    <p>レビュー件数：<%= @home_appliance.reviews.count %></p>
+    <% @home_appliance.reviews.each do |review| %>
+      <%= review.customer.account %>
+      <%= @review.created_at %><%= @review.review_title %>
+    <% end %>
+  </div>
+  <div>
+    <%= form_with model: [@home_appliance, @review], url: public_home_appliance_review_create_path, method: :post do |f| %>
+      <div>
+        <%= f.label :review_title, "レビュータイトル" %>
+        <%= f.text_field :review_title %>
+      </div>
+      <div>
+        <%= f.label :review_contents, "レビュー内容" %>
+        <%= f.text_area :review_contents, roww: '5', placeholder: "レビューはこちらに" %>
+      </div>
+
+      <%= f.submit "レビューする" %>
+    <% end %>
   </div>
 </div>

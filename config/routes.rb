@@ -36,7 +36,11 @@ devise_for :customers,skip: [:passwords], controllers: {
     resources :reviews, only: [:index, :new, :show]
     post '/reviews' => 'reviews#create', as: 'review_create'
     delete '/customer/:id' => 'reviews#destroy', as: 'review_destroy'
-    resources :home_appliances, only: [:index, :new, :show]
+    resources :home_appliances, only: [:index, :new, :show] do
+      resources :reviews, only: [:index, :new, :show]
+      post '/reviews' => 'reviews#create', as: 'review_create'
+      delete '/customer/:id' => 'reviews#destroy', as: 'review_destroy'
+    end
     post 'home_appliances' => 'home_appliances#create', as: 'home_applianc_create'
   end
 

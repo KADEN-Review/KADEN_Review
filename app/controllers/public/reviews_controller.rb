@@ -10,11 +10,11 @@ class Public::ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(review_params)
-    @review.customer_id = current_customer.id
-    @review.save
-    #binding.pry
-    redirect_to public_review_path(@review.id)
+    home_appliance = HomeAppliance.find(params[:home_appliance_id])
+    review = current_customer.reviews.new(review_params)
+    review.home_appliance_id = home_appliance.id
+    review.save
+    redirect_to public_home_appliance_review_path(@review.id)
   end
 
   def show
@@ -33,6 +33,6 @@ class Public::ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:id, :genre_id, :home_appliance_id,
                                    :model_number, :score, :review_contents,
-                                   :image)
+                                   :review_title, :image)
   end
 end

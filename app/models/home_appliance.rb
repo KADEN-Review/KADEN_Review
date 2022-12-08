@@ -1,6 +1,6 @@
 class HomeAppliance < ApplicationRecord
   has_one_attached :image
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   belongs_to :genre
 
   def get_image
