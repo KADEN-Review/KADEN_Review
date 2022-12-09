@@ -1,30 +1,25 @@
 <div>
-  <h1><%= HomeAppliances.model_number %>のレビュー</h1>
-  <div><%= link_to "削除する", admin_review_destroy_path(@review.id), method: :delete %></div>
+  <h1><%= @review.home_appliance.model_number %>のレビュー</h1>
 
   <div>
-    <%= HomeAppliances.model_number %>
-    <%= Genre.name %>
-  </div>
-
-  <div>
-    <%= @review.review_contents %>
-  </div>
-  <div>
-    <% @review.each do |review| %>
-      <div>
-        <p>コメント日時</p>
-        <%= review.comment.created_at %>
-      </div>
-      <div>
-        <p>コメントタイトル</p>
-        <%= link_to admin_comment_path(comment.id) do %>
-          <%= review.comment.comment_title %>
-        <% end %>
-      </div>
-      <div>
-        <p>コメント者</p>
-        <%= review.customer.account %>
-      </div>
+    <div>
+      <% if @review.image.attached? %>
+        <%= image_tag @review.image, size: "300×300" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "300×300" %>
+      <% end %>
+    </div>
+    <div>
+      <%= @review.review_title %>
+    </div>
+    <div>
+      <%= @review.review_contents %>
+    </div>
+    <div>
+      <%= @review.score %>
+    </div>
+    <div>
+      <%= link_to "削除する", admin_review_destroy_path(@review.id), method: :delete %>
+    </div>
   </div>
 </div>

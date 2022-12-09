@@ -2,19 +2,20 @@
   <h1>レビュー詳細</h1>
   <div>
     <% if @review.image.attached? %>
-      <%= image_tag @review.image, size: "200×200" %>
+      <%= image_tag @review.image, size: "300×300" %>
     <% else %>
-      <%= image_tag 'no_image', size: "200×200" %>
+      <%= image_tag 'no_image', size: "300×300" %>
     <% end %>
-    <%= @review.model_number %>
-    <%= @review.genre.name %>
+    <%= @review.home_appliance.model_number %>
+  </div>
+  <div>
+    <%= @review.review_title %>
   </div>
   <div>
     <%= @review.review_contents %>
   </div>
   <div>
-    <%= link_to "コメントをする", new_public_comment_path(@review.id) %>
-    <% if not @reviews.empty? %>
+    <% if customer_signed_in? && current_customer.id == @review.customer_id %>
       <%= link_to "削除", public_review_destroy_path(@review.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
     <% end %>
   </div>

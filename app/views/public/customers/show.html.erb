@@ -8,12 +8,10 @@
     <div>
       <% @reviews.each do |review| %>
         <p>投稿日時:<%= review.created_at %></p>
-        <p>型番:<%= review.model_number %></p>
-        <%= link_to public_review_path(review.id) do %>
-          <%= review.model_number %>
+        <p>型番:<%= link_to public_review_path(review.id) do %>
+          <%= review.home_appliance.model_number %>
         <% end %>
-        <p>家電ジャン:<%= review.genre.name %></p>
-        <p>レビュー数:<%= link_to "#{home_appliance.review.count}レビュー", new_public_review_path %></p>
+        </p>
       <% end %>
     </div>
   </div>

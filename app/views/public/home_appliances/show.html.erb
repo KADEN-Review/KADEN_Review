@@ -14,7 +14,7 @@
     <% end %>
   </div>
   <div>
-    <%= form_with model: [@home_appliance, @review], url: public_home_appliance_review_create_path, method: :post do |f| %>
+    <%= form_with model: [@home_appliance, @review], url: public_home_appliance_review_create_path(@home_appliance.id), method: :post do |f| %>
       <div>
         <%= f.label :review_title, "レビュータイトル" %>
         <%= f.text_field :review_title %>
@@ -23,7 +23,11 @@
         <%= f.label :review_contents, "レビュー内容" %>
         <%= f.text_area :review_contents, roww: '5', placeholder: "レビューはこちらに" %>
       </div>
-
+      <div>
+        <%= f.label :score, "家電評価" %>
+        <%= f.select :score, *[1..5] %>
+      </div>
+      <%= f.hidden_field :genre_id, :value => @home_appliance.genre.id %>
       <%= f.submit "レビューする" %>
     <% end %>
   </div>

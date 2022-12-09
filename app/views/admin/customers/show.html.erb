@@ -23,6 +23,9 @@
     <% end %>
   </div>
 </div>
+<div>
+  <%= link_to "アカウント情報変更", edit_admin_customer_path(@customer.id) %>
+</div>
 
 <div>
   <% @reviews.each do |review| %>
@@ -36,15 +39,7 @@
     </div>
     <div>
       <p>家電型番</p>
-      <%= HomeAppliance.model_number %>
-    </div>
-    <div>
-      <p>コメント数</p>
-
+      <%= review.home_appliance.model_number %>
     </div>
   <% end %>
-</div>
-
-<div>
-  <%= link_to "アカウント情報変更", edit_admin_customer_path(@customer.id) %>
 </div>

@@ -14,7 +14,7 @@ class Public::ReviewsController < ApplicationController
     review = current_customer.reviews.new(review_params)
     review.home_appliance_id = home_appliance.id
     review.save
-    redirect_to public_home_appliance_review_path(@review.id)
+    redirect_to public_review_path(review.id)
   end
 
   def show

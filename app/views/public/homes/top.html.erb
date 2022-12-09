@@ -3,8 +3,9 @@
   <div>
     <h4>最新レビュー</h4>
     <% @review.first(4).each do |review| %>
-      <%= review.home_appliance.model_number %>
-      <%= review.genre.name %>
+      <%= link_to public_review_path(review.id) do %>
+        <%= review.home_appliance.model_number %>
+      <% end %>
     <% end %>
   </div>
 </div>
