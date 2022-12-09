@@ -11,50 +11,58 @@
   </head>
 
   <body>
-    <header>
-      <% if customer_signed_in? %>
-        <p><%= current_customer.account %></p>
-      <% end %>
-      <% if customer_signed_in? %>
-        <li>
-          <%= link_to "マイページ" , public_customer_path(current_customer) %>
-        </li>
-        <li>
-          <%= link_to "レビュー検索", public_reviews_path %>
-        </li>
-        <li>
-          <%= link_to "家電検索", public_home_appliances_path %>
-        </li>
-        <li>
-          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-        </li>
-      <% elsif admin_signed_in? %>
-        <li>
-          <%= link_to "会員一覧", admin_customers_path %>
-        </li>
-        <li>
-          <%= link_to "ジャンル一覧", admin_genres_path %>
-        </li>
-        <li>
-          <%= link_to "家電一覧",  admin_home_appliances_path %>
-        </li>
-        <li>
-          <%= link_to "レビュー一覧", admin_reviews_path %>
-        </li>
-        <li>
-          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to "レビュー検索", public_reviews_path %>
-        </li>
-        <li>
-          <%= link_to "新規登録", new_customer_registration_path %>
-        </li>
-        <li>
-          <%= link_to "ログイン", new_customer_session_path %>
-        </li>
-      <% end %>
+    <header class="navbar navbar-expand-lg">
+      <div class="container">
+        <div class="navbar-brand">
+          <span class="border border-dark">KADEN_Reviews</span>
+        </div>
+        <% if customer_signed_in? %>
+          <div><%= current_customer.account %></div>
+        <% end %>
+        <div class="navbar-nav ml-auto">
+          <% if customer_signed_in? %>
+          <div class="row">
+            <li class="nav-item btn btn-outline-dark">
+              <%= link_to "マイページ" , public_customer_path(current_customer), class: 'text-dark' %>
+            </li>
+            <li class="nav-item btn btn-outline-dark">
+              <%= link_to "レビュー検索", public_reviews_path, class: 'text-dark' %>
+            </li>
+            <li class="nav-item btn btn-outline-dark">
+              <%= link_to "家電検索", public_home_appliances_path, class: 'text-dark' %>
+            </li>
+            <li class="nav-item btn btn-outline-dark">
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'text-dark' %>
+            </li>
+          <% elsif admin_signed_in? %>
+            <li class="nav-item btn btn-outline-dark">
+              <%= link_to "会員一覧", admin_customers_path, class: 'text-dark' %>
+            </li>
+            <li class="nav-item btn btn-outline-dark">
+              <%= link_to "ジャンル一覧", admin_genres_path, class: 'text-dark' %>
+            </li>
+            <li class="nav-item btn btn-outline-dark">
+              <%= link_to "家電一覧",  admin_home_appliances_path, class: 'text-dark' %>
+            </li>
+            <li class="nav-item btn btn-outline-dark">
+              <%= link_to "レビュー一覧", admin_reviews_path, class: 'text-dark' %>
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'text-dark' %>
+            </li>
+          <% else %>
+            <li class="nav-item btn btn-outline-dark">
+              <%= link_to "レビュー検索", public_reviews_path, class: 'text-dark' %>
+            </li>
+            <li class="nav-item btn btn-outline-dark">
+              <%= link_to "新規登録", new_customer_registration_path, class: 'text-dark' %>
+            </li>
+            <li class="nav-item btn btn-outline-dark">
+              <%= link_to "ログイン", new_customer_session_path, class: 'text-dark' %>
+            </li>
+          <% end %>
+        </div>
+      </div>
     </header>
     <%= yield %>
   </body>

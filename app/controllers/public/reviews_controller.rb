@@ -19,7 +19,6 @@ class Public::ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
-    @reviews = current_customer.reviews
   end
 
   def destroy

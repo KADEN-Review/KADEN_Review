@@ -1,10 +1,12 @@
-<h1>会員一覧</h1>
+<div class="container px-5 px-sm-0">
+  <h1>会員一覧</h1>
 
-<div>
-  <% @customers.each do |customer| %>
-    <%= customer.id %>
-    <%= link_to admin_customer_path(customer.id) do %>
-      <%= customer.account %>
+  <div>
+    <% @customers.each do |customer| %>
+      <%= customer.id %>
+      <%= link_to admin_customer_path(customer.id) do %>
+        <%= customer.account %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>

@@ -1,22 +1,24 @@
-<h1><%= @customer.account %>様の編集画面</h1>
+<div class="container px-5 px-sm-0">
+  <h1><%= @customer.account %>様の編集画面</h1>
 
-<div>
-  <%= form_with model: @customer, url: admin_customer_update_path(@customer.id), method: :patch do |f| %>
-    <div>
-      <%= f.label :customer, "アカウント名" %>
-      <%= f.text_field :account %>
-    </div>
-    <div>
-      <%= f.label :customer, "メールアドレス" %>
-      <%= f.text_field :email %>
-    </div>
-    <div>
-      <%= f.label :is_deleted, "アカウントステータス" %>
-      <%= f.radio_button :is_deleted, false %>
-      <%= f.label :is_deleted, "有効" %>
-      <%= f.radio_button :is_deleted, true %>
-      <%= f.label :is_deleted, "無効" %>
-    </div>
-    <%= f.submit "保存" %>
-  <% end %>
+  <div>
+    <%= form_with model: @customer, url: admin_customer_update_path(@customer.id), method: :patch do |f| %>
+      <div>
+        <%= f.label :customer, "アカウント名" %>
+        <%= f.text_field :account %>
+      </div>
+      <div>
+        <%= f.label :customer, "メールアドレス" %>
+        <%= f.text_field :email %>
+      </div>
+      <div>
+        <%= f.label :is_deleted, "アカウントステータス" %>
+        <%= f.radio_button :is_deleted, false %>
+        <%= f.label :is_deleted, "有効" %>
+        <%= f.radio_button :is_deleted, true %>
+        <%= f.label :is_deleted, "無効" %>
+      </div>
+      <%= f.submit "保存" %>
+    <% end %>
+  </div>
 </div>
