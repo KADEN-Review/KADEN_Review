@@ -1,18 +1,45 @@
-<div class="container px-5 px-sm-0">
+<div class="container">
   <h2>ジャンル登録・一覧</h2>
 
   <div>
-    <%= form_with model: @genre, url:  admin_genres_create_path, method: :post do |f| %>
-      <%= f.label :name, "ジャンル名" %>
-      <%= f.text_field :name %>
-      <%= f.submit "登録する" %>
-    <% end %>
+    <table class="table table-borderless">
+      <%= form_with model: @genre, url:  admin_genres_create_path, method: :post do |f| %>
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= f.label :name, "ジャンル名" %></td>
+            <td><%= f.text_field :name %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><%= f.submit "登録する" %></td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
   </div>
 
   <div>
-    <% @genres.each do |genre| %>
-      <%= genre.name %>
-      <%= link_to "編集", edit_admin_genre_path(genre.id), class: "btn btn-success" %>
-    <% end %>
+    <table class="table table-borderless">
+      <% @genres.each do |genre| %>
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= genre.name %></td>
+            <td><%= link_to "編集", edit_admin_genre_path(genre.id), class: "btn btn-success" %></td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
   </div>
 </div>

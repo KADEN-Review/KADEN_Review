@@ -1,24 +1,44 @@
-<div class="container px-5 px-sm-0">
+<div class="container">
   <h1><%= @customer.account %>様の編集画面</h1>
 
-  <div>
-    <%= form_with model: @customer, url: admin_customer_update_path(@customer.id), method: :patch do |f| %>
-      <div>
-        <%= f.label :customer, "アカウント名" %>
-        <%= f.text_field :account %>
-      </div>
-      <div>
-        <%= f.label :customer, "メールアドレス" %>
-        <%= f.text_field :email %>
-      </div>
-      <div>
-        <%= f.label :is_deleted, "アカウントステータス" %>
-        <%= f.radio_button :is_deleted, false %>
-        <%= f.label :is_deleted, "有効" %>
-        <%= f.radio_button :is_deleted, true %>
-        <%= f.label :is_deleted, "無効" %>
-      </div>
-      <%= f.submit "保存" %>
-    <% end %>
+  <div class="row">
+    <div class="col-lg-8">
+      <%= form_with model: @customer, url: admin_customer_update_path(@customer.id), method: :patch do |f| %>
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= f.label :customer, "アカウント名" %></td>
+              <td><%= f.text_field :account %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><%= f.label :customer, "メールアドレス" %></td>
+              <td><%= f.text_field :email %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><%= f.label :is_deleted, "アカウントステータス" %></td>
+              <td>
+                <%= f.radio_button :is_deleted, false %>
+                <%= f.label :is_deleted, "有効" %>
+                <%= f.radio_button :is_deleted, true %>
+                <%= f.label :is_deleted, "無効" %>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><%= f.submit "保存", class: 'btn btn-success' %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
   </div>
 </div>

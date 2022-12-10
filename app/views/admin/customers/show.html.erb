@@ -1,47 +1,53 @@
-<div class="container px-5 px-sm-0">
+<div class="container">
   <h1><%= @customer.account %>様の詳細画面</h1>
+
   <div>
-    <p>アカウントID</p>
-    <%= @customer.id %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>アカウントID</th>
+          <th>アカウント名</th>
+          <th>メールアドレス</th>
+          <th>アカウントステータス</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @customer.id %></td>
+          <td><%= @customer.account %></td>
+          <td><%= @customer.email %></td>
+          <td>
+            <% if @customer.is_deleted %>
+              無効
+            <% else %>
+              有効
+            <% end %>
+          </td>
+          <td><%= link_to "アカウント情報変更", edit_admin_customer_path(@customer.id) %></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <div>
-    <p>アカウント名</p>
-    <%= @customer.account %>
-  </div>
-
-  <div>
-    <p>メールアドレス</p>
-    <%= @customer.email %>
-  </div>
-  <div>
-    <p>アカウントステータス</p>
-    <div>
-      <% if @customer.is_deleted %>
-        無効
-      <% else %>
-        有効
-      <% end %>
-    </div>
-  </div>
-  <div>
-    <%= link_to "アカウント情報変更", edit_admin_customer_path(@customer.id) %>
-  </div>
-
-  <div>
-    <% @reviews.each do |review| %>
-      <div>
-        <p>レビュー日時</p>
-        <%= review.created_at %>
-      </div>
-      <div>
-        <p>ジャンル</p>
-        <%= Genre.name %>
-      </div>
-      <div>
-        <p>家電型番</p>
-        <%= review.home_appliance.model_number %>
-      </div>
-    <% end %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>レビュー日時</th>
+          <th>ジャンル</th>
+          <th>家電型番</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @reviews.each do |review| %>
+          <tr>
+            <td><%= review.created_at %></td>
+            <td><%= Genre.name %></td>
+            <td><%= review.home_appliance.model_number %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
