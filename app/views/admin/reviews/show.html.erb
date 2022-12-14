@@ -1,25 +1,38 @@
 <div class="container px-5 px-sm-0">
   <h1><%= @review.home_appliance.model_number %>のレビュー</h1>
 
-  <div>
-    <div>
-      <% if @review.image.attached? %>
-        <%= image_tag @review.image, size: "300×300" %>
-      <% else %>
-        <%= image_tag 'no_image', size: "300×300" %>
-      <% end %>
-    </div>
-    <div>
-      <%= @review.review_title %>
-    </div>
-    <div>
-      <%= @review.review_contents %>
-    </div>
-    <div>
-      <%= @review.score %>
-    </div>
-    <div>
-      <%= link_to "削除する", admin_review_destroy_path(@review.id), method: :delete %>
-    </div>
-  </div>
+  <table class="table table-borderless">
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <% if @review.image.attached? %>
+            <%= image_tag @review.image, size: "300×300" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "300×300" %>
+          <% end %>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>レビュータイトル</td>
+        <td><%= @review.review_title %></td>
+      </tr>
+      <tr>
+        <td>レビュー点数</td>
+        <td><%= @review.score %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><%= link_to "削除する", admin_review_destroy_path(@review.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

@@ -34,7 +34,10 @@
             </tr>
             <tr>
               <td></td>
-              <td><%= f.submit "保存", class: 'btn btn-success' %></td>
+              <td>
+                <%= f.submit "保存", class: 'btn btn-success' %>
+                <%= link_to "詳細画面へ戻る", admin_customer_path(@customer.id), class: "btn btn-info" %>
+              </td>
             </tr>
           </tbody>
         </table>

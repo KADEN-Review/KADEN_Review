@@ -1,11 +1,22 @@
 <div class="container px-5 px-sm-0">
   <h1><%= @home_appliance.model_number %>詳細</h1>
 
-  <div>
-    <p>カテゴリー</p>
-    <%= @home_appliance.genre.name %>
-  </div>
-  <div>
-    <%= link_to "編集", edit_admin_home_appliance_path(@home_appliance.id) %>
-  </div>
+  <table class="table table-borderless">
+    <thead>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>カテゴリー</td>
+        <td><%= @home_appliance.genre.name %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><%= link_to "編集", edit_admin_home_appliance_path(@home_appliance.id), class: "btn btn-success" %></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

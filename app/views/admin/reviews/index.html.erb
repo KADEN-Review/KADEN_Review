@@ -2,17 +2,26 @@
   <h1>レビュー一覧</h1>
 
   <div>
-    <% @reviews.each do |review| %>
-    <div>
-      <p>レビュー日時:<%= review.created_at %></p>
-    </div>
-    <div>
-      <p>家電型番:<%= link_to admin_review_path(review.id) do %>
-          <%= review.home_appliance.model_number %>
-        <% end %>
-      </p>
-    </div>
-    <% end %>
+    <table class="table">
+      <% @reviews.each do |review| %>
+      <thead>
+        <tr>
+          <th>レビュー日時</th>
+          <th>家電型番</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= review.created_at %></td>
+          <td>
+            <%= link_to admin_review_path(review.id) do %>
+              <%= review.home_appliance.model_number %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
   </div>
 
 </div>
