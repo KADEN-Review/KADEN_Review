@@ -1,18 +1,31 @@
-<div class="container px-5 px-sm-0">
-  <h1>マイページ</h1>
-  <%= current_customer.account %>
-  <%= link_to "アカウント名変更", edit_public_customer_path(current_customer.id) %>
+<div class="container px-5 px-sm-0"></br>
 
-  <div>
-    <h2>投稿レビュー一覧</h2>
-    <div>
-      <% @reviews.each do |review| %>
-        <p>投稿日時:<%= review.created_at %></p>
-        <p>型番:<%= link_to public_review_path(review.id) do %>
-          <%= review.home_appliance.model_number %>
-        <% end %>
-        </p>
-      <% end %>
-    </div>
-  </div>
+  <h1><%= current_customer.account %></h1>
+  <%= link_to "アカウント名変更", edit_public_customer_path(current_customer.id), class: "btn btn-success" %>
+
+  <h4>投稿レビュー一覧</h4>
+  <table class="table">
+    <% @reviews.each do |review| %>
+    <thead>
+      <tr>
+        <th>投稿日時</th>
+        <th>型番</th>
+        <th>レビュータイトル</th>
+        <th>評価</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= review.created_at %></td>
+        <td><%= review.home_appliance.model_number %></td>
+        <td>
+          <%= link_to public_review_path(review.id) do %>
+            <%= review.review_title %>
+          <% end %>
+        </td>
+        <td><%= review.score %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
 </div>

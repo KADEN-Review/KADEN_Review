@@ -1,11 +1,38 @@
-<div class="container px-5 px-sm-0">
-  <h1>家電レビュー</h1>
-  <div>
-    <h4>最新レビュー</h4>
+<div class="container px-5 px-sm-0"></br>
+
+  <h4>最新レビュー</h4>
+  <table class="table">
     <% @review.first(4).each do |review| %>
-      <%= link_to public_review_path(review.id) do %>
-        <%= review.home_appliance.model_number %>
-      <% end %>
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <% if review.image.attached? %>
+              <%= image_tag review.image, size: "200×200" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "200×200" %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to public_review_path(review.id) do %>
+              <%= review.home_appliance.model_number %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to public_review_path(review.id) do %>
+              <%= review.review_title %>
+            <% end %>
+          </td>
+          <td><%= review.score %></td>
+        </tr>
+      </tbody>
     <% end %>
-  </div>
+  </table>
 </div>

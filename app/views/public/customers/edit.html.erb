@@ -1,9 +1,22 @@
-<div class="container px-5 px-sm-0">
-  <h1>会員情報変更</h1>
-  <%= form_with model: @customer, url: public_customer_path(current_customer.id), method: :patch do |f| %>
-    <p>アカウント名</p>
-    <%= f.text_field :account %>
-    <%= f.submit "保存する" %>
-    <%= link_to "登録削除", public_unsubscribe_path(current_customer) %>
-  <% end %>
+<div class="container"></br>
+  <h2>会員情報変更</h2>
+  <table class="table table-borderless">
+    <%= form_with model: @customer, url: public_customer_path(current_customer.id), method: :patch do |f| %>
+    <thead>
+      <tr>
+        <th>アカウント名</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= f.text_field :account %></td>
+        <td>
+          <%= f.submit "保存する", class: "btn btn-success" %>
+          <%= link_to "登録削除", public_unsubscribe_path(current_customer), class: "btn btn-danger" %>
+        </td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
 </div>
