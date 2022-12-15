@@ -27,6 +27,10 @@ class Public::ReviewsController < ApplicationController
     redirect_to public_reviews_path
   end
 
+  def search
+    @reviews = Review.search(params[:model_number])
+  end
+
   private
 
   def review_params

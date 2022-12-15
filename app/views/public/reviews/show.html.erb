@@ -1,25 +1,43 @@
-<div class="container px-5 px-sm-0">
-  <h1>レビュー詳細</h1>
+<div class="container"></br>
+  <h2><%= @review.home_appliance.model_number %>のレビュー</h2>
+
+  <table class="table table-borderless">
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <% if @review.image.attached? %>
+            <%= image_tag @review.image, size: "300×300" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "300×300" %>
+          <% end %>
+          <%= @review.home_appliance.model_number %>
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table table-borderless">
+    <thead>
+      <tr>
+        <th><%= @review.review_title %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @review.review_contents %></td>
+      </tr>
+    </tbody>
+  </table>
   <div>
-    <% if @review.image.attached? %>
-      <%= image_tag @review.image, size: "300×300" %>
-    <% else %>
-      <%= image_tag 'no_image', size: "300×300" %>
-    <% end %>
-    <%= @review.home_appliance.model_number %>
-  </div>
-  <div>
-    <%= @review.review_title %>
-  </div>
-  <div>
-    <%= @review.review_contents %>
-  </div>
-  <div>
-    <%= link_to 'レビュー一覧へ戻る', public_reviews_path %>
-  </div>
-  <div>
+    <%= link_to 'レビュー一覧へ戻る', public_reviews_path, class: "btn btn-info" %>
     <% if customer_signed_in? && current_customer.id == @review.customer_id %>
-      <%= link_to "削除", public_review_destroy_path(@review.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      <%= link_to "削除", public_review_destroy_path(@review.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
     <% end %>
   </div>
 </div>

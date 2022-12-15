@@ -14,10 +14,10 @@ class Review < ApplicationRecord
   end
 
   def self.search(search)
-    if search
-      HomeAppliance.where(["model_number like?", "%#{search}%"])
+    if search != ""
+      Review.where("model_number like?", "%#{search}%")
     else
-      HomeAppliance.all
+      Review.all
     end
   end
 

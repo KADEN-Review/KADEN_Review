@@ -1,21 +1,36 @@
-<div class="container px-5 px-sm-0">
-  <h1>家電レビュー検索</h1>
-  <% @reviews.each do |review| %>
-    <div>
-      <% if review.image.attached? %>
-        <%= image_tag review.image, size: "100×100" %>
-      <% else %>
-        <%= image_tag 'no_image', size: "100×100" %>
-      <% end %>
-    </div>
-    <div>
-      <%= link_to public_review_path(review.id) do %>
-        <%= review.home_appliance.model_number %>
-      <% end %>
-    </div>
-    <div>
-      <%#= review.genre.name %>
-    </div>
+<div class="container"></br>
 
+  <h2>家電レビュー検索</h2>
+  <%= form_with(url: search_public_reviews_path, local: true, method: :get, class: "search-form") do |f| %>
+    <%= f.text_field :model_number, placeholder: "投稿を検索する", class: "search-input" %>
+    <%= f.submit "検索", class: "search-btn" %>
   <% end %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>レビュータイトル</th>
+        <th>型番</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reviews.each do |review| %>
+      <tr>
+        <td>
+          <% if review.image.attached? %>
+            <%= image_tag review.image, size: "100×100" %>
+          <% else %>
+              <%= image_tag 'no_image', size: "100×100" %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to public_review_path(review.id) do %>
+            <%= review.review_title %>
+          <% end %>
+        </td>
+        <td><%= review.home_appliance.model_number %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
