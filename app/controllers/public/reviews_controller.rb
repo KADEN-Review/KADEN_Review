@@ -1,7 +1,13 @@
 class Public::ReviewsController < ApplicationController
 
   def index
-    @reviews = Review.all
+    if params[:keyword].present?
+      #binding.pry
+      @home_appliances = HomeAppliance.where("model_number LIKE?", params[:keyword])
+      @reviews = Review.where(home_appliance_id: @home_appliances.ids[0])
+    else
+      @reviews = Review.all
+    end
   end
 
   def new
@@ -28,7 +34,7 @@ class Public::ReviewsController < ApplicationController
   end
 
   def search
-    @reviews = Review.search(params[:model_number])
+    @reviews = Review.search(params[:keyword])
   end
 
   private

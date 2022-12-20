@@ -1,8 +1,8 @@
 <div class="container"></br>
 
-  <h2>家電レビュー検索</h2>
-  <%= form_with(url: search_public_reviews_path, local: true, method: :get, class: "search-form") do |f| %>
-    <%= f.text_field :model_number, placeholder: "投稿を検索する", class: "search-input" %>
+  <h2>家電レビュー検索</h2></br>
+  <%= form_with(url: public_reviews_path, local: true, method: :get, class: "search-form") do |f| %>
+    <%= f.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
     <%= f.submit "検索", class: "search-btn" %>
   <% end %>
   <table class="table">

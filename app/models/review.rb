@@ -14,8 +14,8 @@ class Review < ApplicationRecord
   end
 
   def self.search(search)
-    if search != ""
-      Review.where("model_number like?", "%#{search}%")
+    if search
+      Review.where('model_number LIKE(?)', "%#{search}%")
     else
       Review.all
     end
