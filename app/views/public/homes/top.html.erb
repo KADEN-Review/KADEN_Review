@@ -9,6 +9,7 @@
           <th></th>
           <th></th>
           <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -31,6 +32,11 @@
             <% end %>
           </td>
           <td><%= review.score %></td>
+          <td>
+            <%= link_to public_customer_path(review.customer_id) do %>
+              <%= review.customer.account %>
+            <% end %>
+          </td>
         </tr>
       </tbody>
     <% end %>
