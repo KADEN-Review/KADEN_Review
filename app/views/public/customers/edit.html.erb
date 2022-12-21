@@ -1,7 +1,6 @@
 <div class="container"></br>
   <h2>会員情報変更</h2>
   <table class="table table-borderless">
-    <%= form_with model: @customer, url: public_customer_path(current_customer.id), method: :patch do |f| %>
     <thead>
       <tr>
         <th>アカウント名</th>
@@ -9,6 +8,7 @@
       </tr>
     </thead>
     <tbody>
+      <%= form_with model: @customer, url: public_customer_path(current_customer.id), method: :patch do |f| %>
       <tr>
         <td><%= f.text_field :account %></td>
         <td>

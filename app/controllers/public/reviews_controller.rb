@@ -2,7 +2,6 @@ class Public::ReviewsController < ApplicationController
 
   def index
     if params[:keyword].present?
-      #binding.pry
       @home_appliances = HomeAppliance.where("model_number LIKE?", params[:keyword])
       @reviews = Review.where(home_appliance_id: @home_appliances.ids[0])
     else

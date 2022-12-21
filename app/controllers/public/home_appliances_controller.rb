@@ -1,7 +1,11 @@
 class Public::HomeAppliancesController < ApplicationController
   def index
-    @home_appliances = HomeAppliance.all
-    @home_appliance = HomeAppliance.new
+    #binding.pry
+    if params[:keyword].present?
+      @home_appliances = HomeAppliance.where("model_number LIKE?", params[:keyword])
+    else
+      @home_appliances = HomeAppliance.all
+    end
   end
 
   def new

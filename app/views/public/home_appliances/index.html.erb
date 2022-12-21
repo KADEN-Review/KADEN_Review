@@ -1,5 +1,9 @@
 <div class="container"></br>
-  <h2>家電検索</h2>
+  <h2>家電検索</h2></br>
+  <%= form_with(url: public_home_appliances_path, local: true, method: :get, class: "search-form") do |f| %>
+    <%= f.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+    <%= f.submit "検索", class: "search-btn" %>
+  <% end %>
   <p>レビューしたい家電が見つからない場合は<%= link_to "こちら", new_public_home_appliance_path %></p>
 
   <table class="table">

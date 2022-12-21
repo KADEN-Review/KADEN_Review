@@ -33,11 +33,7 @@ devise_for :customers,skip: [:passwords], controllers: {
     delete '/customers/:id' => 'customers#destroy', as: 'customer_destroy'
     get '/customer/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch '/customer/withdraw' => 'customers#withdraw', as: 'withdraw'
-    resources :reviews, only: [:index, :new, :show] do
-      collection do
-        get 'search'
-      end
-    end
+    resources :reviews, only: [:index, :new, :show]
     post '/reviews' => 'reviews#create', as: 'review_create'
     delete '/customer/:id' => 'reviews#destroy', as: 'review_destroy'
     resources :home_appliances, only: [:index, :new, :show] do
