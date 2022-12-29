@@ -1,40 +1,36 @@
-<div class="container">
+<div class="container"></br>
   <h2><%= @home_appliance.model_number %>レビュー登録</h2>
-
-　<div>
+  <div>
+    <p>家電ジャンル：<%= @home_appliance.genre.name %></p>
     <p>レビュー件数：<%= @home_appliance.reviews.count %></p>
-    <% @home_appliance.reviews.each do |review| %>
-      <%= review.customer.account %>
-      <%= @review.created_at %><%= @review.review_title %>
-    <% end %>
   </div>
 
+  <%= form_with model: [@home_appliance, @review], url: public_home_appliance_review_create_path(@home_appliance.id), method: :post do |f| %>
   <table class="table table-borderless">
-    <%= form_with model: [@home_appliance, @review], url: public_home_appliance_review_create_path(@home_appliance.id), method: :post do |f| %>
-    　<thead>
-      　<tr>
-        　<th></th>
-        　<th></th>
-      　</tr>
-    　</thead>
-    　<tbody>
-      　<tr>
-      　   <td><%= f.label :review_title, "レビュータイトル" %></td>
-          <td><%= f.text_field :review_title, size: "47x10" %></td>
-      　</tr>
-      　<tr>
-          <td><%= f.label :score, "家電評価" %></td>
-          <td><%= f.select :score, *[1..5] %></td>
-      　</tr>
-      　<tr>
-          <td><%= f.label :review_contents, "レビュー内容" %></td>
-          <td><%= f.text_area :review_contents, roww: '5', placeholder: "レビューはこちらに", size: "50x5" %></td>
-      　</tr>
-      　<tr>
-      　   <td><%= f.hidden_field :genre_id, :value => @home_appliance.genre.id %></td>
-      　   <td><%= f.submit "レビューする", class: "btn btn-primary" %></td>
-      　</tr>
-    　</tbody>
-    <% end %>
+  　<thead>
+    　<tr>
+      　<th>レビュー内容</th>
+      　<th></th>
+    　</tr>
+  　</thead>
+  　<tbody>
+    　<tr>
+    　   <td><%= f.label :review_title, "レビュータイトル" %></td>
+        <td><%= f.text_field :review_title, size: "47x10" %></td>
+    　</tr>
+    　<tr>
+        <td><%= f.label :score, "家電評価" %></td>
+        <td><%= f.select :score, *[1..5] %></td>
+    　</tr>
+    　<tr>
+        <td><%= f.label :review_contents, "レビュー内容" %></td>
+        <td><%= f.text_area :review_contents, roww: '5', placeholder: "レビューはこちらに", size: "50x5" %></td>
+    　</tr>
+     　<tr>
+    　   <td><%= f.hidden_field :genre_id, :value => @home_appliance.genre.id %></td>
+    　   <td><%= f.submit "レビューする", class: "btn btn-primary" %> <%= link_to "家電一覧へ戻る", public_home_appliances_path, class: "btn btn-info" %></td>
+    　</tr>
+    </tbody>
   </table>
+  <% end %>
 </div>

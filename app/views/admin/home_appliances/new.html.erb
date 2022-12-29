@@ -1,35 +1,35 @@
 <div class="container">
   <h1>新規家電登録</h1>
 
-  <table class="table table-borderless">
-    <%= form_with model: @home_appliance, url: admin_home_appliance_create_path, method: :post do |f| %>
-    <thead>
-     <tr>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= f.label :image, "家電画像" %></td>
-        <td><%= f.file_field :image, accept: "image/*" %></td>
-      </tr>
-      <tr>
-        <td><%= f.label :model_number, "型番" %></td>
-        <td><%= f.text_field :model_number %></td>
-      </tr>
-      <tr>
-        <td><%= f.label :genre, "カテゴリー" %></td>
-        <td><%= f.collection_select :genre_id, @genre, :id, :name, prompt: "選択してください" %></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td>
-          <%= f.submit "新規登録", class: "btn btn-primary" %>
-          <%= link_to "一覧へ戻る", admin_home_appliances_path, class: "btn btn-info" %>
-        </td>
-      </tr>
-    </tbody>
-    <% end %>
-  </table>
+  <%= form_with model: @home_appliance, url: admin_home_appliance_create_path, method: :post do |f| %>
+    <table class="table table-borderless">
+      <thead>
+       <tr>
+          <th></th>
+          <th></th>
+       </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= f.label :image, "家電画像" %></td>
+          <td><%= f.file_field :image, accept: "image/*" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :model_number, "型番" %></td>
+          <td><%= f.text_field :model_number %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :genre, "カテゴリー" %></td>
+          <td><%= f.collection_select :genre_id, @genre, :id, :name, prompt: "選択してください" %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <%= f.submit "新規登録", class: "btn btn-primary" %>
+            <%= link_to "一覧へ戻る", admin_home_appliances_path, class: "btn btn-info" %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
 </div>

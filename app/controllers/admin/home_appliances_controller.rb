@@ -7,7 +7,7 @@ class Admin::HomeAppliancesController < ApplicationController
   def create
     home_appliance = HomeAppliance.new(home_appliance_params)
     home_appliance.save
-    redirect_to admin_home_appliances_path
+    redirect_to admin_home_appliance_path(home_appliance.id)
   end
 
   def index

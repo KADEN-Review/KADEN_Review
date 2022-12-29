@@ -14,7 +14,9 @@
     <header class="navbar navbar-expand-lg bg-warning">
       <div class="container">
         <div class="navbar-brand">
-          <%= image_tag 'dengencable', size: "100x80" %>
+          <%= link_to root_path do %>
+            <%= image_tag 'dengencable', size: "100x80" %>
+          <% end %>
           <span>KADEN_Reviews</span>
         </div>
         <% if customer_signed_in? %>

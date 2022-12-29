@@ -1,28 +1,28 @@
 <div class="container"></br>
   <h2>レビューしたい家電登録</h2>
 
+  <%= form_with model: @home_appliance, url: public_home_applianc_create_path, method: :post do |f| %>
   <table class="table table-borderless">
-    <%= form_with model: @home_appliance, url: public_home_applianc_create_path, method: :post do |f| %>
-      <thead>
-        <tr>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><%= f.label :model_number, "家電型番" %></td>
-          <td><%= f.text_field :model_number %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :genre, "家電ジャンル" %></td>
-          <td><%= f.collection_select :genre_id, @genre, :id, :name, include_blank: "--選択してください--" %></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><%= f.submit "登録する", class: "btn btn-primary" %></td>
-        </tr>
-      </tbody>
-    <% end %>
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+         <td><%= f.label :model_number, "家電型番" %></td>
+        <td><%= f.text_field :model_number %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :genre, "家電ジャンル" %></td>
+        <td><%= f.collection_select :genre_id, @genre, :id, :name, include_blank: "--選択してください--" %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><%= f.submit "登録する", class: "btn btn-primary" %></td>
+      </tr>
+    </tbody>
   </table>
+  <% end %>
 </div>
