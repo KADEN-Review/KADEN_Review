@@ -3,6 +3,9 @@ class HomeAppliance < ApplicationRecord
   has_many :reviews, dependent: :destroy
   belongs_to :genre
 
+  validates :model_number, presence: true
+  validates :genre_id, presence: true
+
   def get_image
     unless image.attached?
       file_path = Ralis.root.join('app/assets/images/no_image.jpg')

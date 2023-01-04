@@ -4,6 +4,9 @@ class Review < ApplicationRecord
   belongs_to :home_appliance
   belongs_to :customer
 
+  validates :review_title, presence: true
+  validates :score, presence: true
+  validates :review_contents, presence: true
 
   def get_image
     unless image.attached?

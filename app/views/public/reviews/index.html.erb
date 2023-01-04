@@ -5,6 +5,14 @@
     <%= f.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
     <%= f.submit "検索", class: "search-btn" %>
   <% end %>
+
+  <div>
+    <h2>ジャンル絞り込み</h2>
+    <%= form_with(url: public_reviews_path, local: true, method: :get) do |f| %>
+      <%= f.collection_select :genre_id, @genre, :id, :name, prompt: "絞り込みたい家電ジャンルを選んでください" %>
+      <%= f.submit "絞り込む" %>
+    <% end %>
+  </div>
   <table class="table">
     <thead>
       <tr>

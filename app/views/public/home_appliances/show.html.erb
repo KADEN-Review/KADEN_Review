@@ -5,6 +5,17 @@
     <p>レビュー件数：<%= @home_appliance.reviews.count %></p>
   </div>
 
+  <div>
+    <% if @review.errors.any? %>
+      <%= @review.errors.count %>つのエラーが発生しました
+      <ul>
+        <% @review.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+
   <%= form_with model: [@home_appliance, @review], url: public_home_appliance_review_create_path(@home_appliance.id), method: :post do |f| %>
   <table class="table table-borderless">
   　<thead>

@@ -4,9 +4,13 @@ class Public::ReviewsController < ApplicationController
     if params[:keyword].present?
       @home_appliances = HomeAppliance.where("model_number LIKE?", params[:keyword])
       @reviews = Review.where(home_appliance_id: @home_appliances.ids[0])
+    elsif params[:genre_id].present?
+      @genres = Genre.where("name LIKE?", params[:genre_id])
+      @reviews = Review.where(genre_id: @genres.ids[0])
     else
       @reviews = Review.all
     end
+    @genre = Genre.all
   end
 
   def new
@@ -15,11 +19,14 @@ class Public::ReviewsController < ApplicationController
   end
 
   def create
-    home_appliance = HomeAppliance.find(params[:home_appliance_id])
-    review = current_customer.reviews.new(review_params)
-    review.home_appliance_id = home_appliance.id
-    review.save
-    redirect_to public_review_path(review.id)
+    @home_appliance = HomeAppliance.find(params[:home_appliance_id])
+    @review = current_customer.reviews.new(review_params)
+    @review.home_appliance_id = @home_appliance.id
+    if @review.save
+      redirect_to public_review_path(@review.id)
+    else
+      render template: "public/home_appliances/show"
+    end
   end
 
   def show

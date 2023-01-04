@@ -1,4 +1,12 @@
 ja:
-  time:
-    formats:
-      default: "%Y/%m/%d"
+  activerecord:
+    attributes:
+      customer:
+        account: アカウント
+      home_appliance:
+        model_number: 型番
+      review:
+        review_title: レビュータイトル
+        review_contents: レビュー内容
+  activemodel:
+    attributes:

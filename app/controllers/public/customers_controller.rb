@@ -1,7 +1,7 @@
 class Public::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
-    @reviews = Review.all
+    @reviews = @customer.reviews
   end
 
   def edit

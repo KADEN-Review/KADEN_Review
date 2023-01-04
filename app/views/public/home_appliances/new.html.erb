@@ -1,6 +1,16 @@
 <div class="container"></br>
   <h2>レビューしたい家電登録</h2>
 
+  <div>
+    <% if @home_appliance.errors.any? %>
+      <%= @home_appliance.errors.count %>つのエラーが発生しました
+      <ul>
+        <% @home_appliance.errors.full_messages.each do|message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
   <%= form_with model: @home_appliance, url: public_home_applianc_create_path, method: :post do |f| %>
   <table class="table table-borderless">
     <thead>

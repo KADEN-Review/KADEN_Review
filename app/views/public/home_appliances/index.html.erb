@@ -6,6 +6,13 @@
   <% end %>
   <p>レビューしたい家電が見つからない場合は<%= link_to "こちら", new_public_home_appliance_path %></p>
 
+  <div>
+    <h2>ジャンル絞り込み</h2>
+    <%= form_with(url: public_reviews_path, local: true, method: :get) do |f| %>
+      <%= f.collection_select :keyword, @genre, :id, :name, prompt: "絞り込みたい家電ジャンルを選んでください" %>
+      <%= f.submit "絞り込む" %>
+    <% end %>
+  </div>
   <table class="table">
     <thead>
       <tr>
