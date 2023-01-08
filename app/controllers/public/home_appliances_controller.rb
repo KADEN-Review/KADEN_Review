@@ -3,10 +3,10 @@ class Public::HomeAppliancesController < ApplicationController
   def index
     if params[:keyword].present?
       @home_appliances = HomeAppliance.where("model_number LIKE?", params[:keyword])
-    elsif params[:keyword].present?
-      @home_appliances = Genre.where("genre_id LIKE?", params[:keyword])
+    elsif params[:genre_id].present?
+      @home_appliances = Genre.where("genre_id LIKE?", params[:genre_id])
     else
-      @home_appliances = HomeAppliance.all
+      @home_appliances = HomeAppliance.page(params[:page])
     end
     @genre = Genre.all
   end
@@ -21,6 +21,7 @@ class Public::HomeAppliancesController < ApplicationController
     if @home_appliance.save
       redirect_to public_home_appliance_path(@home_appliance.id)
     else
+      @genre = Genre.all
       render :new
     end
   end

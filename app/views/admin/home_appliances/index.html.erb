@@ -1,17 +1,18 @@
 <div class="container">
 
   <h1>家電一覧</h1>
-  <table class="table">
-    <thead>
-      <tr>
-        <th><%= link_to "新規家電登録", new_admin_home_appliance_path, class: "btn btn-primary" %></th>
-        <th></th>
-      </tr>
-    </thead>
-  </table>
-  <table class="table">
-    <tbody>
-      <% @home_appliances.each do |home_appliance| %>
+  <div class="row">
+  <% @home_appliances.each do |home_appliance| %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= link_to "新規家電登録", new_admin_home_appliance_path, class: "btn btn-primary" %></th>
+          <th></th>
+        </tr>
+      </thead>
+    </table>
+    <table class="table">
+      <tbody>
         <tr>
           <td>
             <%= home_appliance.model_number %>
@@ -23,7 +24,13 @@
             <%= link_to "詳細画面へ", admin_home_appliance_path(home_appliance.id), class: "btn btn-primary" %>
           </td>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  <% end %>
+  </div>
+  <div class="row">
+    <div class="mx-auto">
+      <%= paginate @home_appliances %>
+    </div>
+  </div>
 </div>

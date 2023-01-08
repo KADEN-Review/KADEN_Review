@@ -1,50 +1,62 @@
 <div class="container"></br>
 
-  <h2>家電レビュー検索</h2></br>
-  <%= form_with(url: public_reviews_path, local: true, method: :get, class: "search-form") do |f| %>
-    <%= f.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
-    <%= f.submit "検索", class: "search-btn" %>
-  <% end %>
-
-  <div>
-    <h2>ジャンル絞り込み</h2>
-    <%= form_with(url: public_reviews_path, local: true, method: :get) do |f| %>
-      <%= f.collection_select :genre_id, @genre, :id, :name, prompt: "絞り込みたい家電ジャンルを選んでください" %>
-      <%= f.submit "絞り込む" %>
-    <% end %>
-  </div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th></th>
-        <th>レビュータイトル</th>
-        <th>型番</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @reviews.each do |review| %>
-      <tr>
-        <td>
-          <% if review.image.attached? %>
-            <%= image_tag review.image, size: "100×100" %>
-          <% else %>
-              <%= image_tag 'no_image', size: "100×100" %>
-          <% end %>
-        </td>
-        <td>
-          <%= link_to public_review_path(review.id) do %>
-            <%= review.review_title %>
-          <% end %>
-        </td>
-        <td><%= review.home_appliance.model_number %></td>
-        <td>
-          <%= link_to public_customer_path(review.customer.id) do %>
-            <%= review.customer.account %>
-          <% end %>
-        </td>
-      </tr>
+  <div class="row">
+    <div class="col-3-xl">
+      <h3>ジャンル絞り込み</h3>
+      <%= form_with(url: public_reviews_path, local: true, method: :get) do |f| %>
+        <%= f.collection_select :genre_id, @genre, :id, :name, prompt: "家電ジャンルを選んでください" %>
+        <%= f.submit "絞り込む" %>
       <% end %>
-    </tbody>
-  </table>
+
+      <h3>家電レビュー検索</h3>
+      <%= form_with(url: public_reviews_path, local: true, method: :get, class: "search-form") do |f| %>
+        <%= f.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+        <%= f.submit "検索", class: "search-btn" %>
+      <% end %>
+    </div></br>
+
+    <div class="col">
+      <% @reviews.each do |review| %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>レビュータイトル</th>
+              <th>型番</th>
+              <th>ジャンル名</th>
+              <th>レビュー者</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <% if review.image.attached? %>
+                  <%= image_tag review.image, size: "100×100" %>
+                <% else %>
+                  <%= image_tag 'no_image', size: "100×100" %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to public_review_path(review.id) do %>
+                  <%= review.review_title %>
+                <% end %>
+              </td>
+              <td><%= review.home_appliance.model_number %></td>
+              <td><%= review.genre.name %></td>
+              <td>
+                <%= link_to public_customer_path(review.customer.id) do %>
+                  <%= review.customer.account %>
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mx-auto">
+      <%= paginate @reviews %>
+    </div>
+  </div>
 </div>

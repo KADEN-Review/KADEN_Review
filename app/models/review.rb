@@ -3,6 +3,7 @@ class Review < ApplicationRecord
 
   belongs_to :home_appliance
   belongs_to :customer
+  belongs_to :genre
 
   validates :review_title, presence: true
   validates :score, presence: true
@@ -14,14 +15,6 @@ class Review < ApplicationRecord
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', cotent_type: 'image/jpeg')
     end
     image
-  end
-
-  def self.search(search)
-    if search
-      Review.where('model_number LIKE(?)', "%#{search}%")
-    else
-      Review.all
-    end
   end
 
 end

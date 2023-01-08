@@ -5,6 +5,7 @@ ja:
         account: アカウント
       home_appliance:
         model_number: 型番
+        genre_id: 家電ジャンル
       review:
         review_title: レビュータイトル
         review_contents: レビュー内容

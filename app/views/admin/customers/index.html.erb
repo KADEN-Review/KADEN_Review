@@ -1,7 +1,7 @@
 <div class="container">
   <h1>会員一覧</h1>
 
-  <div>
+  <div class="row">
     <table class="table">
       <thead>
         <tr>
@@ -22,5 +22,10 @@
         <% end %>
       </tbody>
     </table>
+  </div>
+  <div class="row">
+    <div class="mx-auto">
+      <%= paginate @customers %>
+    </div>
   </div>
 </div>

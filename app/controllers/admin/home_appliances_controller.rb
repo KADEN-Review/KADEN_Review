@@ -11,7 +11,7 @@ class Admin::HomeAppliancesController < ApplicationController
   end
 
   def index
-    @home_appliances = HomeAppliance.all
+    @home_appliances = HomeAppliance.page(params[:page])
   end
 
   def show

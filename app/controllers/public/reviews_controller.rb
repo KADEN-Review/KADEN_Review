@@ -5,10 +5,9 @@ class Public::ReviewsController < ApplicationController
       @home_appliances = HomeAppliance.where("model_number LIKE?", params[:keyword])
       @reviews = Review.where(home_appliance_id: @home_appliances.ids[0])
     elsif params[:genre_id].present?
-      @genres = Genre.where("name LIKE?", params[:genre_id])
-      @reviews = Review.where(genre_id: @genres.ids[0])
+      @reviews = Review.where(genre_id: params[:genre_id])
     else
-      @reviews = Review.all
+      @reviews = Review.page(params[:page])
     end
     @genre = Genre.all
   end

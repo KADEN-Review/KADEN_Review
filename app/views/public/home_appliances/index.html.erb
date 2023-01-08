@@ -1,44 +1,57 @@
 <div class="container"></br>
-  <h2>家電検索</h2></br>
-  <%= form_with(url: public_home_appliances_path, local: true, method: :get, class: "search-form") do |f| %>
-    <%= f.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
-    <%= f.submit "検索", class: "search-btn" %>
-  <% end %>
-  <p>レビューしたい家電が見つからない場合は<%= link_to "こちら", new_public_home_appliance_path %></p>
 
-  <div>
-    <h2>ジャンル絞り込み</h2>
-    <%= form_with(url: public_reviews_path, local: true, method: :get) do |f| %>
-      <%= f.collection_select :keyword, @genre, :id, :name, prompt: "絞り込みたい家電ジャンルを選んでください" %>
-      <%= f.submit "絞り込む" %>
-    <% end %>
-  </div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th></th>
-        <th>型番</th>
-        <th>家電ジャンル</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @home_appliances.each do |home_appliance| %>
-      <tr>
-        <td>
-          <% if home_appliance.image.attached? %>
-            <%= image_tag home_appliance.image, size: "100×100" %>
-          <% else %>
-            <%= image_tag 'no_image', size: "100×100" %>
-          <% end %>
-        </td>
-        <td>
-          <%= link_to public_home_appliance_path(home_appliance.id) do %>
-            <%= home_appliance.model_number %>
-          <% end %>
-        </td>
-        <td><%= home_appliance.genre.name %></td>
-      </tr>
+  <div class="row">
+    <div class="col">
+      <h2>ジャンル絞り込み</h2>
+      <%= form_with(url: public_reviews_path, local: true, method: :get) do |f| %>
+        <%= f.collection_select :genre_id, @genre, :id, :name, prompt: "家電ジャンルを選んでください" %>
+        <%= f.submit "絞り込む" %>
       <% end %>
-    </tbody>
-  </table>
+    </div>
+
+    <div class="col">
+      <h2>家電検索</h2>
+      <%= form_with(url: public_home_appliances_path, local: true, method: :get, class: "search-form") do |f| %>
+        <%= f.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+        <%= f.submit "検索", class: "search-btn" %>
+      <% end %>
+      <p>レビューしたい家電が見つからない場合は<%= link_to "こちら", new_public_home_appliance_path %></p>
+    </div>
+
+    <div class="row">
+      <% @home_appliances.each do |home_appliance| %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>型番</th>
+              <th>家電ジャンル</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <% if home_appliance.image.attached? %>
+                  <%= image_tag home_appliance.image, size: "100×100" %>
+                <% else %>
+                  <%= image_tag 'no_image', size: "100×100" %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to public_home_appliance_path(home_appliance.id) do %>
+                  <%= home_appliance.model_number %>
+                <% end %>
+              </td>
+              <td><%= home_appliance.genre.name %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mx-auto">
+      <%= paginate @home_appliances %>
+    </div>
+  </div>
 </div>
