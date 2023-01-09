@@ -1,37 +1,57 @@
-<div class="container px-5 px-sm-0">
-  <h1>レビュー一覧</h1>
+<div class="container">
+  <h2>レビュー一覧</h2></br>
+
+  <div class="row">
+    <div>
+      <h3>ジャンル絞り込み</h3>
+      <%= form_with(url: admin_reviews_path, local: true, method: :get) do |f| %>
+        <%= f.collection_select :genre_id, @genre, :id, :name, prompt: "家電ジャンルを選んでください" %>
+        <%= f.submit "絞り込む" %>
+      <% end %>
+
+      <h3>家電レビュー検索</h3>
+      <%= form_with(url: admin_reviews_path, local: true, method: :get, class: "search-form") do |f| %>
+        <%= f.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+        <%= f.submit "検索", class: "search-btn" %>
+      <% end %>
+    </div>
 
   <div class="row">
     <% @reviews.each do |review| %>
       <table class="table">
         <thead>
           <tr>
-            <th>レビュー日時</th>
+            <th></th>
             <th>家電型番</th>
+            <th>ジャンル名</th>
             <th>投稿者</th>
+            <th>レビュー日時</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><%= review.created_at %></td>
+            <td>
+              <% if review.image.attached? %>
+                <%= image_tag review.image, size: "100×100" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "100×100" %>
+              <% end %>
+            </td>
             <td>
               <%= link_to admin_review_path(review.id) do %>
                 <%= review.home_appliance.model_number %>
               <% end %>
             </td>
+            <td><%= review.genre.name %></td>
             <td>
               <%= link_to admin_customer_path(review.customer_id) do %>
                 <%= review.customer.account %>
               <% end %>
             </td>
+            <td><%= review.created_at %></td>
           </tr>
         </tbody>
       </table>
     <% end %>
-  </div>
-  <div class="row">
-    <div class="mx-auto">
-      <%= paginate @reviews %>
-    </div>
   </div>
 </div>

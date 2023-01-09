@@ -6,7 +6,7 @@ class Public::HomeAppliancesController < ApplicationController
     elsif params[:genre_id].present?
       @home_appliances = Genre.where("genre_id LIKE?", params[:genre_id])
     else
-      @home_appliances = HomeAppliance.page(params[:page])
+      @home_appliances = HomeAppliance.all
     end
     @genre = Genre.all
   end

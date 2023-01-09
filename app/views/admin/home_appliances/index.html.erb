@@ -1,36 +1,61 @@
-<div class="container">
+<div class="container"></br>
+  <div>
+    <h2>家電一覧</h2>
+  </div></br>
 
-  <h1>家電一覧</h1>
   <div class="row">
-  <% @home_appliances.each do |home_appliance| %>
-    <table class="table">
-      <thead>
-        <tr>
-          <th><%= link_to "新規家電登録", new_admin_home_appliance_path, class: "btn btn-primary" %></th>
-          <th></th>
-        </tr>
-      </thead>
-    </table>
-    <table class="table">
-      <tbody>
-        <tr>
-          <td>
-            <%= home_appliance.model_number %>
-          </td>
-          <td>
-            <%= home_appliance.genre.name %>
-          </td>
-          <td>
-            <%= link_to "詳細画面へ", admin_home_appliance_path(home_appliance.id), class: "btn btn-primary" %>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  <% end %>
-  </div>
-  <div class="row">
-    <div class="mx-auto">
-      <%= paginate @home_appliances %>
+    <div class="col">
+      <h2>ジャンル絞り込み</h2>
+      <%= form_with(url: admin_home_appliances_path, local: true, method: :get) do |f| %>
+        <%= f.collection_select :genre_id, @genre, :id, :name, prompt: "家電ジャンルを選んでください" %>
+        <%= f.submit "絞り込む" %>
+      <% end %>
+      <p><%= link_to "新規家電登録", new_admin_home_appliance_path, class: "btn btn-primary" %></p>
     </div>
+
+    <div class="col">
+      <h2>家電検索</h2>
+      <%= form_with(url: admin_home_appliances_path, local: true, method: :get, class: "search-form") do |f| %>
+        <%= f.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+        <%= f.submit "検索", class: "search-btn" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <% @home_appliances.each do |home_appliance| %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+      </table>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <% if home_appliance.image.attached? %>
+                <%= image_tag home_appliance.image, size: "100×100" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "100×100" %>
+              <% end %>
+            </td>
+            <td>
+              <%= home_appliance.model_number %>
+            </td>
+            <td>
+              <%= home_appliance.genre.name %>
+            </td>
+            <td>
+              <%= link_to "詳細画面へ", admin_home_appliance_path(home_appliance.id), class: "btn btn-primary" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
   </div>
 </div>

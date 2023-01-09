@@ -11,7 +11,16 @@ class Admin::HomeAppliancesController < ApplicationController
   end
 
   def index
-    @home_appliances = HomeAppliance.page(params[:page])
+    #binding.pry
+    @genre = Genre.all
+    if params[:keyword].present?
+      @home_appliances = HomeAppliance.where("model_number LIKE?", params[:keyword])
+    elsif params[:genre_id].present?
+      @home_appliances = Genre.where("genre_id LIKE?", params[:genre_id])
+    else
+      @home_appliances = HomeAppliance.all
+    end
+    @genre = Genre.all
   end
 
   def show
@@ -35,11 +44,6 @@ class Admin::HomeAppliancesController < ApplicationController
     redirect_to admin_home_appliances_path
   end
 
-  def search
-    @home_appliances = HomeAppliance.search(params[:search])
-    @search = params[:search]
-    render "index"
-  end
   private
 
   def home_appliance_params

@@ -7,7 +7,7 @@ class Public::ReviewsController < ApplicationController
     elsif params[:genre_id].present?
       @reviews = Review.where(genre_id: params[:genre_id])
     else
-      @reviews = Review.page(params[:page])
+      @reviews = Review.all
     end
     @genre = Genre.all
   end

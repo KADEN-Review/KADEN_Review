@@ -1,7 +1,15 @@
 class Admin::ReviewsController < ApplicationController
 
   def index
-    @reviews = Review.page(params[:page])
+    if params[:keyword].present?
+      @home_appliances = HomeAppliance.where("model_number LIKE?", params[:keyword])
+      @reviews = Review.where(home_appliance_id: @home_appliances.ids[0])
+    elsif params[:genre_id].present?
+      @reviews = Review.where(genre_id: params[:genre_id])
+    else
+      @reviews = Review.all
+    end
+    @genre = Genre.all
   end
 
   def show

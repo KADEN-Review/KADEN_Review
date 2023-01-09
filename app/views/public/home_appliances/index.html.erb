@@ -1,15 +1,19 @@
 <div class="container"></br>
-
   <div class="row">
-    <div class="col">
+    <h2>家電一覧</h2>
+  </div>
+  <div class="row">
+    <div>
       <h2>ジャンル絞り込み</h2>
       <%= form_with(url: public_reviews_path, local: true, method: :get) do |f| %>
         <%= f.collection_select :genre_id, @genre, :id, :name, prompt: "家電ジャンルを選んでください" %>
         <%= f.submit "絞り込む" %>
       <% end %>
     </div>
+  </div>
 
-    <div class="col">
+  <div class="row">
+    <div>
       <h2>家電検索</h2>
       <%= form_with(url: public_home_appliances_path, local: true, method: :get, class: "search-form") do |f| %>
         <%= f.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
@@ -17,6 +21,7 @@
       <% end %>
       <p>レビューしたい家電が見つからない場合は<%= link_to "こちら", new_public_home_appliance_path %></p>
     </div>
+  </div>
 
     <div class="row">
       <% @home_appliances.each do |home_appliance| %>
@@ -47,11 +52,6 @@
           </tbody>
         </table>
       <% end %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="mx-auto">
-      <%= paginate @home_appliances %>
     </div>
   </div>
 </div>

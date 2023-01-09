@@ -34,17 +34,23 @@
     <table class="table">
       <thead>
         <tr>
-          <th>レビュー日時</th>
-          <th>ジャンル</th>
+          <th>レビュータイトル</th>
           <th>家電型番</th>
+          <th>ジャンル</th>
+          <th>レビュー日時</th>
         </tr>
       </thead>
       <tbody>
         <% @reviews.each do |review| %>
           <tr>
-            <td><%= review.created_at %></td>
-            <td><%= Genre.name %></td>
+            <td>
+              <%= link_to admin_review_path(review.id) do %>
+                <%= review.review_title %>
+              <% end %>
+            </td>
             <td><%= review.home_appliance.model_number %></td>
+            <td><%= review.genre.name %></td>
+            <td><%= review.created_at %></td>
           </tr>
         <% end %>
       </tbody>
