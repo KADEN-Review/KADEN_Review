@@ -12,11 +12,10 @@ class Admin::HomeAppliancesController < ApplicationController
 
   def index
     #binding.pry
-    @genre = Genre.all
     if params[:keyword].present?
       @home_appliances = HomeAppliance.where("model_number LIKE?", params[:keyword])
     elsif params[:genre_id].present?
-      @home_appliances = Genre.where("genre_id LIKE?", params[:genre_id])
+      @home_appliances = HomeAppliance.where("genre_id LIKE?", params[:genre_id])
     else
       @home_appliances = HomeAppliance.all
     end
