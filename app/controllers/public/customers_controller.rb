@@ -1,4 +1,5 @@
 class Public::CustomersController < ApplicationController
+  before_action :move_to_signed_in
   def show
     @customer = Customer.find(params[:id])
     @reviews = @customer.reviews.page(params[:page])
@@ -30,5 +31,11 @@ class Public::CustomersController < ApplicationController
 
   def customer_params
     params.require(:customer).permit(:account)
+  end
+
+  def move_to_signed_in
+    unless customer_signed_in?
+      redirect_to new_customer_session_path
+    end
   end
 end

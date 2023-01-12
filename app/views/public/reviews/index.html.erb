@@ -22,6 +22,7 @@
             <tr>
               <th></th>
               <th>レビュータイトル</th>
+              <th>家電評価</th>
               <th>型番</th>
               <th>ジャンル名</th>
               <th>レビュー者</th>
@@ -41,6 +42,7 @@
                   <%= review.review_title %>
                 <% end %>
               </td>
+              <td><%= review.score %></td>
               <td><%= review.home_appliance.model_number %></td>
               <td><%= review.genre.name %></td>
               <td>
