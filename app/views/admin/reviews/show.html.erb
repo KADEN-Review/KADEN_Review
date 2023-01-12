@@ -16,7 +16,7 @@
           <% if @review.image.attached? %>
             <%= image_tag @review.image, size: "300×300" %>
           <% else %>
-            <%= image_tag 'no_image', size: "300×300" %>
+            <%= image_tag asset_path('no_image', size: "300×300") %>
           <% end %>
         </td>
         <td></td>
