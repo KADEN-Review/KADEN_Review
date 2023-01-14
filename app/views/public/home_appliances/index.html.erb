@@ -5,7 +5,7 @@
   <div class="row">
     <div>
       <h2>ジャンル絞り込み</h2>
-      <%= form_with(url: public_reviews_path, local: true, method: :get) do |f| %>
+      <%= form_with(url: public_home_appliances_path, local: true, method: :get) do |f| %>
         <%= f.collection_select :genre_id, @genre, :id, :name, prompt: "家電ジャンルを選んでください" %>
         <%= f.submit "絞り込む" %>
       <% end %>
