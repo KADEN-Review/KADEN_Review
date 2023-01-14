@@ -14,9 +14,9 @@
       <tr>
         <td>
           <% if @review.image.attached? %>
-            <%= image_tag @review.image, size: "300×300" %>
+            <%= image_tag @review.image, size: "200x200" %>
           <% else %>
-            <%= image_tag 'no_image', size: "300×300" %>
+            <%= image_tag 'no_image.jpg', size: "200x200" %>
           <% end %>
         </td>
         <td></td>

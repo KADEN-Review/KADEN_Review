@@ -6,10 +6,18 @@
       <tr>
         <td></td>
         <td></td>
+        <td></td>
       </tr>
     </thead>
     <tbody>
       <tr>
+        <td>
+          <% if @home_appliance.image.attached? %>
+            <%= image_tag @home_appliance.image, size: "300x300" %>
+          <% else %>
+            <%= image_tag 'no_image.jpg', size: "300×300" %>
+          <% end %>
+        </td>
         <td>カテゴリー</td>
         <td><%= @home_appliance.genre.name %></td>
       </tr>
