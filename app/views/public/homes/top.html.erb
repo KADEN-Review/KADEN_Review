@@ -2,7 +2,7 @@
 
   <h4>最新レビュー</h4>
   <table class="table">
-    <% @review.first(4).each do |review| %>
+    <% @review.first(8).each do |review| %>
       <thead>
         <tr>
           <th></th>
@@ -16,9 +16,9 @@
         <tr>
           <td>
             <% if review.image.attached? %>
-              <%= image_tag review.image, size: "200×200" %>
+              <%= image_tag review.image, size: "100x100" %>
             <% else %>
-              <%= image_tag 'no_image.jpg', size: "200×200" %>
+              <%= image_tag 'no_image.jpg', size: "100x100" %>
             <% end %>
           </td>
           <td>
