@@ -16,7 +16,10 @@
         </tr>
         <tr>
           <td></td>
-          <td><%= f.submit "保存する", class: "btn btn-success" %></td>
+          <td>
+            <%= f.submit "保存する", class: "btn btn-success" %>
+            <%= link_to "削除する", admin_genres_destroy_path(@genre.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+          </td>
         </tr>
       </tbody>
     </table>

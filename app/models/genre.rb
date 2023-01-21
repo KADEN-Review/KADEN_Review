@@ -1,4 +1,4 @@
 class Genre < ApplicationRecord
-  has_many :reviews
-  has_many :home_appliances
+  has_many :reviews, dependent: :destroy
+  has_many :home_appliances, dependent: :destroy
 end

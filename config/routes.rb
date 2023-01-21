@@ -22,6 +22,7 @@ devise_for :customers,skip: [:passwords], controllers: {
      delete '/home_appliances/:id' => 'home_appliances#destroy', as: 'home_appliance_destroy'
      get '/search' => 'home_appliances#search', as: 'search'
      resources :genres, only: [:index, :edit, :update]
+     delete '/genres/:id' => 'genres#destroy', as: 'genres_destroy'
      post '/genres' => 'genres#create', as: 'genres_create'
   end
 

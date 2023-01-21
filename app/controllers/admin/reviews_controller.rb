@@ -25,7 +25,9 @@ class Admin::ReviewsController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).premit(:account)
+    params.require(:review).premit(:id, :genre_id, :home_appliance_id,
+                                   :model_number, :score, :review_contents,
+                                   :review_title, :image)
   end
 
 end
